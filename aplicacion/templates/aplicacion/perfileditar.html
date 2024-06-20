@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/registro.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <title>Registro</title>
+</head>
+<body>
+    <section class="form-register">
+        <h4>Actualice sus datos</h4>
+        <form id="registroForm" action="index.html">
+            <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su nombre">
+            <span class="error" id="errorNombres"></span> <!-- Mensaje de error -->
+            <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su nuevo nombre de usuario">
+            <span class="error" id="errorApellidos"></span> <!-- Mensaje de error -->
+            <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su direccion">
+            <span class="error" id="errorNombres"></span> <!-- Mensaje de error -->
+            <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
+            <span class="error" id="errorCorreo"></span> <!-- Mensaje de error -->
+            <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese su Antigua contraseña">
+            <span class="error" id="errorContraseña"></span> <!-- Mensaje de error -->
+            <input class="controls" type="password" name="confirmContraseña" id="confirmContraseña" placeholder="Ingrese su nueva contraseña">
+            <button class="butons" type="button" onclick="validarRegistro()">Actualizar datos</button>
+        </form>
+        <script src="js/validacion_perfil.js"></script>
+    </section>

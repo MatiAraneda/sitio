@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/registro.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <title>Registro</title>
+</head>
+<body>
+    <section class="form-register">
+        <h4>Formulario Registro</h4>
+        <form id="registroForm" action="index.html">
+            <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
+            <span class="error" id="errorCorreo"></span> <!-- Mensaje de error -->
+            <button type="button" onclick="validarRegistro()">Restablecer mi contraseña</button>
+        </form>
+        <script src="js/olvido.js"></script>
+    </section>

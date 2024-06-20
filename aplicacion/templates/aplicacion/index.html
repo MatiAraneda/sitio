@@ -1,0 +1,316 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
+</head>
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a href={% url "index" %} class="logo">Planix Games</a>
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src={% static "../static/img/index/menu.png" %} class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href={% url "index" %}>inicio</a></li>
+                    <li><a href={% url "PlayStation" %}>PlayStation</a></li>
+                    <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
+                    <li><a href={% url "login" %}>Conectate</a></li>
+                    <li><a href={% url "carrito" %}>Carrito</a></li>
+                </ul>
+            </nav>
+            <div>
+                <ul>
+                    <li class="submenu">
+                        <a href={% url "carrito" %}>
+                            <img id="img-carrito" src={% static "../static/img/index/car.svg"%} alt="car">
+
+                        </a>
+                        <div id="carrito">
+                            <table id="lista-carrito">
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <a href="#" id="vaciar-carrito" class="btn-3">Vaciar Carrito</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="header-content container">
+            <div class="header-txt">
+                <span>Bienvenido a nuestra tienda</span>
+                <h1>¡OFERTAS!</h1>
+                <p>
+                    ¡Ultimas unidades!
+                </p>
+                <div class="butons">
+                    <a href={% url "ofertas" %} class="btn-1">Ver ofertas</a>
+                </div>
+            </div>
+            <div class="header-img">
+                <img src={% static "../static/img/index/bag.png" %} alt="">
+            </div>
+        </div>
+    
+    </header>
+
+    <section class="oferts container">
+
+        <div class="ofert-1 b1">
+            <div class="ofert-txt">
+                <h3>Juegos de Playstation</h3>
+                <a href={% url "PlayStation" %}>Clic aqui</a>
+            </div>
+            <div class="ofert-img">
+                <img src= {% static "../static/img/index/s1.png" %} alt="">
+            </div>
+        </div>
+
+        <div class="ofert-1 b2">
+            <div class="ofert-txt">
+                <h3>Juegos de Nintendo Switch</h3>
+                <a href={% url "nintendo" %}>Clic aqui</a>
+            </div>
+            <div class="ofert-img">
+                <img src={% static "../static/img/index/s2.png" %} alt="">
+            </div>
+        </div>
+
+        <div class="ofert-1 b3">
+            <div class="ofert-txt">
+                <h3>Juegos de Xbox</h3>
+                <a href={% url "Xbox" %}>Clic aqui</a>
+            </div>
+            <div class="ofert-img">
+                <img src={% static "../static/img/index/s3.png"%} alt="">
+            </div>
+        </div>
+    </section>
+
+    <main class="products container">
+        <h2>Mas comprados</h2>
+        <div class="box-container" id="lista-1">
+            <div class="box">
+                <img src={% static "../static/img/index/pr1.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Arms</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="1">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr2.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Fallout new vegas</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="2">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr3.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Farcry Primal</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="3">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr4.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Farycry 5</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="4">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr5.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Forza 5</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="5">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr6.png"%} alt="">
+                <div class="product-txt">
+                    <h3>GTA V</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="6">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static  "../static/img/index/pr7.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Halo 5</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="7">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr8.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Mario Kart 8</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="8">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr9.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Mario Odyssey</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="9">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr10.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Metal Gear Solid V</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="10">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr11.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Resident evil 7</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="11">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src={% static "../static/img/index/pr12.png"%} alt="">
+                <div class="product-txt">
+                    <h3>Splatoon</h3>
+                    <p>¡Ultimas unidades!</p>
+                    <p class="precio">$49.990</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="12">
+                        Agregar al carrito
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="btn-2" id="load-more">Cargar mas</div>
+    </main>
+
+    <section class="testimonial container">
+        <span>Testimoniales</span>
+        <h2>Que opinan nuestros clientes</h2>
+        <div class="testimonial-content">
+            <div class="testimonial-1">
+                <p>
+                    Excelente servicio envio expedito
+                </p>
+                <img src={% static "../static/img/index/stars.png"%} alt="">
+                <h4>Manuelito Gamer</h4>
+            </div>
+            <div class="testimonial-1">
+                <p>
+                    Buenas ofertas
+                </p>
+                <img src={% static "../static/img/index/stars.png"%} alt="">
+                <h4>Matias Aracneda</h4>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>Horario de Atencion</h3>
+                <ul>
+                    <li><a href="#">Lunes a Viernes</a></li>
+                    <li><a href="#">de 8:00 a 18:00</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href={% url "contacto" %}>Contactenos a traves del</a></li>
+                    <li><a href={% url "contacto" %}>Formulario o al email</a></li>
+                    <li><a href={% url "contacto" %}>MatiasCagarneda@jueguitos.cl</a></li>
+                    <li><a href={% url "contacto" %}>Enviar Formulario</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js" ></script>
+</body>
+</html>

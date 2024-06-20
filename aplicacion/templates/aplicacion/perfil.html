@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">Planix Games</a>
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="img/index/menu.png" class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="PlayStation.html">PlayStation</a></li>
+                    <li><a href="Nintendo.html">Nintendo Switch</a></li>
+                    <li><a href="Xbox.html">Xbox Series X</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+            <div>
+                <ul>
+                    <li class="submenu">
+                        <a href="carrito.html">
+                            <img id="img-carrito" src="img/index/car.svg" alt="car">
+                        </a>
+                        <div id="carrito">
+                            <table id="lista-carrito">
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <a href="#" id="vaciar-carrito" class="btn-3">Vaciar Carrito</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="profile">
+            <div class="container">
+                <h2>Perfil de Usuario</h2>
+                <table class="profile-table">
+                    <tr>
+                        <td>Nombre de Usuario:</td>
+                        <td>MatiasKinelead</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre:</td>
+                        <td>Matias Cagarneda</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>TuMathiDelBoom@nintendo.com</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de registro:</td>
+                        <td>01/01/2024</td>
+                    </tr>
+                    <!-- Puedes agregar más filas según las informaciones de perfil -->
+                    <tr>
+                        <td>Dirección:</td>
+                        <td>Calle 123, Concepcion, Chile</td>
+                    </tr>
+                    <tr>
+                        <td>Teléfono:</td>
+                        <td>+1234567890</td>
+                    </tr>
+                </table>
+                <a href="perfileditar.html">editar sus datos</a>
+            </div>
+        </section>
+        <section class="orders">
+            <div class="container">
+                <h2>Historial de Pedidos</h2>
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Orden</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#12445</td>
+                            <td>22/03/2024</td>
+                            <td>$50000</td>
+                            <td>Entregado</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>#12446</td>
+                            <td>01/03/2024</td>
+                            <td>$55000</td>
+                            <td>Entregado</td>
+                        </tr>
+                        <tr>
+                            <td>#00000</td>
+                            <td>01/02/2024</td>
+                            <td>$50000</td>
+                            <td>Compra Anulada</td>
+                        </tr>
+                        <tr>
+                            <td>#12345</td>
+                            <td>01/05/2024</td>
+                            <td>$50000</td>
+                            <td><a href="seguimiento.html">Seguimiento</a></td>
+                        </tr>
+                        <tr>
+                            <td>""</td>
+                        </tr>
+                        <tr>
+                            <td>""</td>
+                        </tr>
+                        <tr>
+                            <td>""</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>Horario de Atencion</h3>
+                <ul>
+                    <li><a href="#">Lunes a Viernes</a></li>
+                    <li><a href="#">de 8:00 a 18:00</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href="contacto.html">Contactenos a traves del</a></li>
+                    <li><a href="contacto.html">Formulario o al email</a></li>
+                    <li><a href="contacto.html">MatiasCagarneda@jueguitos.cl</a></li>
+                    <li><a href="contacto.html">Enviar Formulario</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js" ></script>
+</body>
+</html>

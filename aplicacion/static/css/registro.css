@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(150deg, #6a8756, #5fa457);
+    height: 100vh;
+}
+
+.form-register {
+    width: 400px;
+    background: #13430b;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #0e0000;
+}
+
+.form-register h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    width: 100%;
+    background: #f4f5f6;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #e8e9eb;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: rgb(6, 12, 5);
+}
+
+.form-register p {
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.form-register a {
+    color: rgb(105, 153, 87);
+    text-decoration: none;
+}
+
+.form-register a:hover {
+    color: rgb(111, 184, 99);
+    text-decoration: underline;
+}
+
+.form-register .botons {
+    width: 100%;
+    background: #7fb975;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+}
+
+.submit-link {
+    display: inline-block;
+    background-color: #6ace74;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.butons {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.butons:hover {
+    background-color: #45a049;
+}

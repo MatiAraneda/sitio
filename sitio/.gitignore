@@ -1,0 +1,4 @@
+aplicacion/pycache/
+sitio/pycache/
+aplicacion/migrations/pycache/
+db.sqlite3

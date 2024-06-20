@@ -1,0 +1,476 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400,600&idsplay=swap");
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    display:flex;
+}
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 115px;
+    height: 110vh;
+    padding: 0 1.7rem;
+    color:skyblue;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background: aquamarine;
+}
+
+.warnings{
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    color: #B06AB3;
+    padding-top: 20px;
+}
+
+.sidebar:hover{
+    width: 240px;
+    transition: 0.3s;
+}
+.logo{
+    height: 80px;
+    padding: 16px;
+}
+.menu{
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+.menu li{
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+.menu li:hover,
+.active {                   /* SACAR */
+    background: azure;
+}
+.menu a{
+    color: darkcyan;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.menu a span {
+    overflow: hidden;
+}
+.menu a i{
+    font-size: 1.2rem;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+.main--content{
+    position: relative;
+    background: #ebe9e9;
+    width: 100%;
+    padding: 1rem;
+}
+
+.header--wrapper img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+.header--wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+}
+.header--title{
+    color:#008b8b;  
+    font-family: 'Lato';  
+}
+.user--info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.searh--box{
+    background:rgb(237,237,237);
+    border-radius: 15px;
+    color: rgba(113,99,186,255);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+}
+.searh--box input{
+    background: transparent;
+    padding: 10px;
+}
+.searh--box i{
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+.searh--box i:hover{
+    transform: scale(1.2);
+}
+
+.payment--card {
+    position: relative; /* Agregamos posición relativa para el contenedor */
+}
+
+.imagenApi {
+    width: 290px; /* Mismo ancho que las tarjetas */
+    height: 150px; /* Mismo alto que las tarjetas */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que exceda el tamaño especificado */
+    border-radius: 10px;
+}
+
+.imagenApi img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 100%; /* La imagen ocupa todo el alto del contenedor */
+    object-fit: cover; /* Escalar la imagen para cubrir todo el contenedor sin distorsión */
+    border-radius: 10px;
+    
+}
+.card--container{
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.card--wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.main--title{
+    color:rgba(113,99,186,255);
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+.payment--card{
+    background: rgb(229,223 ,223);
+    border-radius: 10px;
+    padding: 1.2rem;
+    width: 290px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s ease-in-out;
+}
+
+.payment--card:hover{
+    transform: translateY(-5px);
+}
+.card--header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.amount{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-size: 12px;
+    font-weight: 200;
+}
+.amount--value{
+    font-size: 24px;
+    font-family: 'Lato';
+    font-weight:600;
+}
+.icon{
+    color: #fff;
+    padding: 1rem;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background: #008b8b;
+}
+.card-detail{
+    font-size: 18px;
+    color: #008b8b;
+    letter-spacing: 2px;
+    font-family: 'Lato';
+}
+
+
+.light-red{
+    background: aquamarine;
+}
+.light-purple{
+    background: rgb(254, 226, 254);
+}
+.light-green{
+    background: aquamarine;
+}
+.light-blue {
+    background: rgb(236, 236, 254);
+}
+.dark-red{
+    background: aquamarine;
+}
+.dark-purple{
+    background: purple;
+}
+.dark-green{
+    background: #008b8b;
+}
+.dark-blue{
+    background: blue;
+}
+
+.main--title{
+    color:#008b8b;
+    font-family: 'Lato';
+}
+.tabular--wrapper{
+    background: #fff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 2rem;
+    
+    
+}
+.table-container {
+    width: 100%;
+    color:#008b8b;
+    font-family: 'Lato';
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+thead{
+    background: aquamarine;
+    color:#fff;
+}
+th{
+    padding: 15px;
+    text-align: left;
+    color:#008b8b;
+}
+
+tbody{
+    background: #f2f2f2;
+}
+td{
+    padding: 15px;
+    font-size: 14px;
+    color:#333;
+}
+tr:nth-child(even){
+    background: #fff;
+}
+tfoot{
+    background: aquamarine;
+    font-weight: bold;
+    color:#fff;
+}
+tfoot td{
+    padding: 15px;
+    color:#008b8b;
+    
+    
+}
+.table-container button{
+    color:green;
+    background: none;
+    cursor: pointer;
+}
+
+/* ksjdfkjsdfjsdk */ 
+
+.container {
+    background: #fff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+form {
+    margin-top: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid aquamarine;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    margin-top: 5px;
+}
+
+input[type="submit"] {
+    background-color:aquamarine;
+    color: green;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.estadisticas {
+    background: #fff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 2rem;
+    
+}
+
+h1 {
+    color: #333;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.stat {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    margin: 0 10px;
+    font-family: 'Lato';
+}
+
+.stat h2 {
+    color: #333;
+    text-align: center;
+    font-family: 'Lato';
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+
+
+.value {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight:600;
+    color: #008b8b;
+    text-align: center;
+}
+
+.sin--comentarios{
+    text-align: center;
+    font-style: italic;
+}
+
+/*  A  */
+
+@media (max-width: 900px) {
+    .sidebar {
+      width: 80px;
+      height: calc(100vh - 100px); /* Altura de la barra lateral */
+      padding: 10px;
+      overflow-y: auto; /* Agregamos una barra de desplazamiento vertical */
+      white-space: nowrap;
+      position: fixed;
+      top: 100px; /* Espacio superior para evitar la superposición con la barra superior */
+      left: 0;
+      transition: width 0.3s ease, height 0.3s ease; /* Animación de transición */
+    }
+  
+    .menu {
+      display: block; /* Cambiamos la dirección de la lista a bloque para que se deslice hacia abajo */
+    }
+  
+    .menu li {
+      display: block; /* Cambiamos la dirección de los elementos del menú a bloque */
+      margin-bottom: 10px; /* Espacio entre los elementos */
+    }
+  
+    .menu a {
+      font-size: 12px;
+    }
+  
+    .main--content {
+      padding: 0.5rem;
+      margin-left: 80px; /* Ajustamos el margen izquierdo para dejar espacio para la barra lateral */
+    }
+  
+    .payment--card {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 12px;
+    }
+  
+    .table-container {
+      overflow-x: auto;
+    }
+  
+    table {
+      font-size: 12px;
+    }
+  
+    th,
+    td {
+      padding: 10px;
+    }
+  
+    .main--title {
+      font-size: 14px;
+    }
+  }

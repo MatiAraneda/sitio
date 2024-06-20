@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones</title>
+    <link rel="stylesheet" href="{% static '../static/css/stats.css'%}"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li>
+                <a href={% url "dashboard"%}>
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                
+                <a href={% url "Usuarios"%}>
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url "Productos"%}>
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url "Estadisticas"%}>
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Estadísticas</span>
+                </a>
+            </li>
+                        
+            <li class="active">
+                <a href={% url "Calificaciones"%}>
+                    <i class="fas fa-star"></i>
+                    <span>Calificaciones</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href={% url "index"%}>
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Calificaciones</span>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="user--info">                
+            <img src={% static "../static/img/perfil.png"%} alt="">
+        </div>
+    </div>
+
+    <div class="tabular--wrapper">
+        <h3 class="main--title">Clasificaciones</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Alias</th>
+                        <th>Clasificación</th>
+                        <th>Comentarios</th>
+                        
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>Samuel Eliazar</td>
+                            <td>Reyes Poblete</td>
+                            <td>1kmanerasdmorir</td>
+                            <td>★★★★★</td>
+                            <td>Responden muy rápido ante cualquier duda :D </td>             
+                        </tr>
+
+                        <tr>
+                            <td>Marco Andrés</td>
+                            <td>Carrillo Toledo</td>
+                            <td>MarkusCT</td>
+                            <td>★★★★★</td>
+                            <td>Muy buenos precios, recomendado</td>             
+                        </tr>
+
+                        <tr>
+                            <td>Richard Ignacio</td>
+                            <td>Castillo Castillo</td>
+                            <td>Richard 1998</td>
+                            <td>★★★★☆</td>
+                            <td>buenos precios, pero les faltan juegos de consolas antiguas xd</td>             
+                        </tr>
+
+                        <tr>
+                            <td>Daniel Iván</td>
+                            <td>Salazar Torres</td>
+                            <td>iDiske92</td>
+                            <td>★★★★★</td>
+                            <td>Totalmente recomendables, muy confiables</td>             
+                        </tr>
+
+                        <tr>
+                            <td>Álvaro Juan</td>
+                            <td>Ortiz Guzmán</td>
+                            <td>Alvarito2004</td>
+                            <td>★★★★★</td>
+                            <td class="sin--comentarios">Sin Comentarios</td>            
+                        </tr>
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">Total de Califiaciones: 5</td>
+                        </tr>
+                    </tfoot>                
+            </table>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

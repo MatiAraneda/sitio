@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static '../static/css/stats.css'%}"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href={% url "dashboard" %}>
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                
+                <a href={% url "Usuarios" %}>
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url "Productos"%}>
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url "Estadisticas"%}>
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Estadísticas</span>
+                </a>
+            </li>
+                        
+            <li>
+                <a href={% url "Calificaciones"%}>
+                    <i class="fas fa-star"></i>
+                    <span>Calificaciones</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href={% url "index"%}>
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Inicio</span>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="user--info">
+                
+            <img src={% static "../static/img/perfil.png"%} alt="">
+        </div>
+    </div>
+
+    <div class="card--container">
+        <h3 class="main--title">Información General     ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎     Tu perrito del día es ❤️:</h3>
+        <div class="card--wrapper">
+            <div class="payment--card light-red">
+                <div class="card--header">
+                    <div class="amount">
+                        <span class="title">
+                        Monto facturado del día</span>
+                        <span class="amount--value">$279.950</span>
+                    </div>
+                    <i class="fas fa-dollar-sign icon"></i>
+                </div>
+                <span class="card-detail"></span>
+            </div>
+
+            <div class="payment--card light-green">
+                <div class="card--header">
+                    <div class="amount">
+                        <span class="title">Ventas del mes</span>
+                        <span class="amount--value">$3.423.425</span>
+                    </div>
+                    <i class="fas fa-users icon dark-green"></i>
+                </div>
+                
+            </div> 
+            <div> 
+                <div class="imagenApi" >
+                    <div id="imagen-container"></div>   
+                    </div>
+                </div>  
+            </div>
+    </div>
+    <div class="tabular--wrapper">
+        <h3 class="main--title">Datos financieros de esta semana</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre del Cliente</th>
+                        <th>Tipo de Transacción</th>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                        <th>Categoría</th>
+                        <th>Estado</th>
+                        <th>Editar</th>
+                        
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Richard Ignacio Castillo Castillo</td>
+                            <td>Débito</td>
+                            <td>Super Mario Odyssey</td>
+                            <td>$59.990</td>
+                            <td>Juego Nintendo Switch</td>
+                            <td>Entregado</td>  
+                            <td><a href={% url "DashboardJs"%}>Editar</a></td>                         
+                        </tr>
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Samuel Eliazar Reyes Poblete</td>
+                            <td>Débito</td>
+                            <td>The Last of Us Part I</td>
+                            <td>$59.990</td>
+                            <td>Juego PlayStation 5</td>
+                            <td>Entregado</td>  
+                            <td><a href={% url "DashboardJs"%}>Editar</a></td>                             
+                        </tr>
+
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Álvaro Juan Ortiz Guzmán</td>
+                            <td>Débito</td>
+                            <td>God of War: Ragnarök</td>
+                            <td>$69.990</td>
+                            <td>Juego PlayStation 5</td>
+                            <td>Entregado</td>                 
+                            <td><a href={% url "DashboardJs"%}>Editar</a></td>                
+                        </tr>
+
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Daniel Iván Salazar Torres</td>
+                            <td>Débito</td>
+                            <td>Splatoon 2</td>
+                            <td>$59.990</td>
+                            <td>Juego Nintendo Switch</td>
+                            <td>Entregado</td>                 
+                            <td><a href={% url "DashboardJs"%}>Editar</a></td>                
+                        </tr>
+
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Marco Andrés Carrillo Toledo</td>
+                            <td>Débito</td>
+                            <td>Minecraft</td>
+                            <td>$29.990</td>
+                            <td>Juego Xbox Series X</td>
+                            <td>Entregado</td>                 
+                            <td><a href={% url "DashboardJs"%}>Editar</a></td>               
+                        </tr>
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">Total: $279.950</td>
+                        </tr>
+                    </tfoot>                
+            </table>
+        </div>
+    </div>
+    </div>
+    <script src="{% static 'js/api.js'%}"></script>
+</body>
+</html>

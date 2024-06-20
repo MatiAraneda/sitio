@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos Registrados</title>
+    <link rel="stylesheet" href="{% static '../static/css/stats.css'%}"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li>
+                <a href={% url "dashboard"%}>
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                
+                <a href={% url "Usuarios"%}>
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href={% url "Productos"%}>
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
+            <li>
+                <a href={% url "Estadisticas"%}>
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Estadísticas</span>
+                </a>
+            </li>
+                        
+            <li>
+                <a href={% url "Calificaciones"%}>
+                    <i class="fas fa-star"></i>
+                    <span>Calificaciones</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href={% url "index"%}>
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Usuarios</span>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="user--info">
+                
+            <img src={% static "../static/img/perfil.png"%} alt="">
+        </div>
+    </div>
+
+    
+    <div class="tabular--wrapper">
+        <h3 class="main--title">Productos registrados</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción del producto</th>
+                        <th>Precio del Producto</th>
+                        <th>Editar</th>
+                        
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>                            
+                            <td>Super Mario Odyssey</td>
+                            <td>El último juego de plataformas de Super Mario™ para Nintendo Switch</td>
+                            <td>$59.990</td>
+                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                            
+                        </tr>
+                        <tr>                            
+                            <td>God of War Ragnarök</td>
+                            <td>La secuela del aclamado reboot God of War para PlayStation 5</td>
+                            <td>$69.990</td>                            
+                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                               
+                        </tr>
+                        <tr>                            
+                            <td>Splatoon 2</td>
+                            <td>La fiebre de calamares llega a Nintendo Switch con su secuela</td>
+                            <td>$59.990</td>                            
+                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                               
+                        </tr>
+                        <tr>                            
+                            <td>The Last of Us I</td>
+                            <td>El remaster de uno de los mejores juegos de PlayStation 3, disponible ahora en PlayStation 5</td>
+                            <td>69.990</td>                            
+                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                               
+                        </tr>                      
+                        <tr>                            
+                            <td>Minecraft</td>
+                            <td>El sandbox más vendido de la historia, disponible en Xbox Series X</td>  
+                            <td>$39.990</td>                         
+                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                               
+                        </tr>                                            
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">Total de productos: 5</td>
+                        </tr>
+                    </tfoot>                
+            </table>
+        </div>
+    </div>
+    <a href={% url "Productos"%}>Volver a Productos</a>
+    </div>
+    
+</body>
+</html>

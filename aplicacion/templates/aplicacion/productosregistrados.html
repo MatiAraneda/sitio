@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="{% static '../static/css/stats.css'%}"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li>
+                <a href="Dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                
+                <a href="Usuarios.html">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="Productos.html">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
+            <li>
+                <a href="Estadisticas.html">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Estadísticas</span>
+                </a>
+            </li>
+                        
+            <li>
+                <a href="Calificaciones.html">
+                    <i class="fas fa-star"></i>
+                    <span>Calificaciones</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Inventario</span>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="user--info">
+                
+            <img src="img/perfil.png" alt="">
+        </div>
+    </div>
+
+    
+    <div class="tabular--wrapper">
+        <h3 class="main--title">Datos del inventario</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha de creación</th>
+                        <th>Nombre</th>
+                        <th>.</th>
+                        <th>Stock</th>
+                        <th>Ultimo Restock</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                01-01-2024
+                            </td>
+                            <td>Mario</td>
+                            <td>Kart 8</td>
+                            <td>12</td>
+                            <td>Ayer</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                01-02-2024
+                            </td>
+                            <td>God of war</td>
+                            <td>Ragnarok</td>
+                            <td>20</td>
+                            <td>10/04/2024</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                02-01-2024
+                            </td>
+                            <td>Resident evil 2</td>
+                            <td>Revelations</td>
+                            <td>3</td>
+                            <td>02/01/2024</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                08-02-2024
+                            </td>
+                            <td>Metal Gear Solid 3</td>
+                            <td>Snake Eater</td>
+                            <td>2</td>
+                            <td>ayer</td> 
+                        </tr>                                            
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">Total de Articulos: 7</td>
+                        </tr>
+                    </tfoot>                
+            </table>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
