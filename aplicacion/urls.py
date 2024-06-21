@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, PlayStation,Calificaciones,carrito,carritovacio,compraf,contacto,contactomensaje,dashboard,DashboardJs,EditarProductos,Estadisticas,index2,login,mensaje,mensajecompra,mensajeperfil,nintendo,ofertas,olvido,perfil,perfileditar,Productos,ProductosJs,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox
+from .views import index, PlayStation,Calificaciones,base,carrito,carritovacio,compraf,contacto,contactomensaje,dashboard,DashboardJs,EditarProductos,Estadisticas,index2,login,mensaje,mensajecompra,mensajeperfil,nintendo,ofertas,olvido,perfil,perfileditar,Productos,ProductosJs,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox
 
 urlpatterns = [
     path('',index,name='index'),
@@ -32,5 +32,6 @@ urlpatterns = [
     path('Usuarios',Usuarios,name='Usuarios'),
     path('UsuariosJs',UsuariosJs,name='UsuariosJs'),
     path('Xbox',Xbox,name='Xbox'),
+    path('base',base,name='base'),
 
 ]

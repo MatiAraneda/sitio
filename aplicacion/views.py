@@ -92,3 +92,6 @@ def UsuariosJs (request):
 
 def Xbox (request): 
     return render(request,'aplicacion/xbox.html')
+
+def base (request):
+    return render(request,'aplicacion/base.html')
