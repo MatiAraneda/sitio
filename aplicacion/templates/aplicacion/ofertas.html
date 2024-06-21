@@ -17,17 +17,18 @@
             </label>
             <nav class="navbar">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="PlayStation.html">PlayStation</a></li>
-                    <li><a href="Nintendo.html">Nintendo Switch</a></li>
-                    <li><a href="Xbox.html">Xbox Series X</a></li>
-                    <li><a href="login.html">Conectate</a></li>
+                    <li><a href={% url "index" %}>inicio</a></li>
+                    <li><a href={% url "PlayStation" %}>PlayStation</a></li>
+                    <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
+                    <li><a href={% url "login" %}>Conectate</a></li>
+                    <li><a href={% url "carrito" %}>Carrito</a></li>
                 </ul>
             </nav>
             <div>
                 <ul>
                     <li class="submenu">
-                        <img id="img-carrito" src="img/index/car.svg" alt="car">
+                        <img id="img-carrito" src={% static "../static/img/index/car.svg"%} alt="car">
                         <div id="carrito">
                             <table id="lista-carrito">
                                 <thead>
@@ -48,10 +49,10 @@
 
         <div class="header-content container">
             <div class="header-txt">
-                <img src="img/Nintendo/yadisponible.png" alt="">
+                <img src={% static "../static/img/Nintendo/yadisponible.png"%} alt="">
             </div>
             <div class="header-imgf">
-                <img src="img/index/bag.png" alt="">
+                <img src={% static "../static/img/index/bag.png"%} alt="">
             </div>
         </div>
     
@@ -64,7 +65,7 @@
         <div class="box-container" id="lista-1">
 
             <div class="box">
-                <img src="img/index/pr1.png" alt="">
+                <img src={% static "../static/img/index/pr1.png"%} alt="">
                 <div class="product-txt">
                     <h3>Arms</h3>
                     <p>¡Ultimas unidades!</p>
@@ -76,7 +77,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr2.png" alt="">
+                <img src=src={% static "../static/img/index/pr2.png"%} alt="">
                 <div class="product-txt">
                     <h3>Bayoneta</h3>
                     <p>¡Ultimas unidades!</p>
@@ -88,7 +89,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr3.png" alt="">
+                <img src=src={% static "../static/img/index/pr3.png"%} alt="">
                 <div class="product-txt">
                     <h3>Donkey Kong Country</h3>
                     <p>¡Ultimas unidades!</p>
@@ -100,7 +101,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr4.png" alt="">
+                <img src=src={% static "../static/img/index/pr4.png"%} alt="">
                 <div class="product-txt">
                     <h3>Kirby Deluxe</h3>
                     <p>¡Ultimas unidades!</p>
@@ -112,7 +113,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr5.png" alt="">
+                <img src=src={% static "../static/img/index/pr5.png"%} alt="">
                 <div class="product-txt">
                     <h3>Forza 5</h3>
                     <p>¡Ultimas unidades!</p>
@@ -124,7 +125,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr6.png" alt="">
+                <img src=src={% static "../static/img/index/pr6.png"%} alt="">
                 <div class="product-txt">
                     <h3>Zelda Breath of the Wild</h3>
                     <p>¡Ultimas unidades!</p>
@@ -136,7 +137,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr7.png" alt="">
+                <img src=src={% static "../static/img/index/pr7.png"%} alt="">
                 <div class="product-txt">
                     <h3>Super Smash Bros</h3>
                     <p>¡Ultimas unidades!</p>
@@ -148,7 +149,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr8.png" alt="">
+                <img src=src={% static "../static/img/index/pr8.png"%} alt="">
                 <div class="product-txt">
                     <h3>Kirby Forgotten Land</h3>
                     <p>¡Ultimas unidades!</p>
@@ -160,7 +161,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr9.png" alt="">
+                <img src=src={% static "../static/img/index/pr9.png"%} alt="">
                 <div class="product-txt">
                     <h3>Mario Kart 8</h3>
                     <p>¡Ultimas unidades!</p>
@@ -172,7 +173,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr10.png" alt="">
+                <img src=src={% static "../static/img/index/pr10.png"%} alt="">
                 <div class="product-txt">
                     <h3>Mario Odyssey</h3>
                     <p>¡Ultimas unidades!</p>
@@ -184,7 +185,7 @@
             </div>
 
             <div class="box">
-                <img src="img/index/pr11.png" alt="">
+                <img src=src={% static "../static/img/index/pr11.png"%} alt="">
                 <div class="product-txt">
                     <h3>Splatoon 2</h3>
                     <p>¡Ultimas unidades!</p>
@@ -210,10 +211,10 @@
             <div class="link">
                 <h3>Contacto</h3>
                 <ul>
-                    <li><a href="contacto.html">Contactenos a traves del</a></li>
-                    <li><a href="contacto.html">Formulario o al email</a></li>
-                    <li><a href="contacto.html">MatiasCagarneda@jueguitos.cl</a></li>
-                    <li><a href="contacto.html">Enviar Formulario</a></li>
+                    <li><a href={% url "contacto"%}>Contactenos a traves del</a></li>
+                    <li><a href={% url "contacto"%}>Formulario o al email</a></li>
+                    <li><a href={% url "contacto"%}>MatiasCagarneda@jueguitos.cl</a></li>
+                    <li><a href={% url "contacto"%}>Enviar Formulario</a></li>
                 </ul>
             </div>
             <div class="link">
