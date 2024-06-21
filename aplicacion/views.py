@@ -1,4 +1,11 @@
 from django.shortcuts import render
+from datetime import date
+from .models import Persona
+from django.shortcuts import get_object_or_404, redirect
+from .forms import ProductosForm
+from django.contrib import messages
+from os import path, remove
+from django.conf import settings
 
 # Create your views here.
 
@@ -70,7 +77,29 @@ def perfileditar (request):
     return render(request,'aplicacion/perfileditar.html')
 
 def Productos (request): 
-    return render(request,'aplicacion/Productos.html')
+    form=ProductosForm()
+
+    if request.method=="POST":
+        form=ProductosForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Producto agregado al registro')
+            return redirect(to="dahsboard")
+
+    datos={
+        "form":form
+    }
+    return render(request,'aplicacion/Productos.html', datos)
+    
+
+
+
+
+
+
+
+
+
 
 def ProductosJs (request): 
     return render(request,'aplicacion/ProductosJs.html')
@@ -92,3 +121,4 @@ def UsuariosJs (request):
 
 def Xbox (request): 
     return render(request,'aplicacion/xbox.html')
+

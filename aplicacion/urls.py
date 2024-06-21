@@ -1,6 +1,10 @@
 from django.urls import path
 from .views import index, PlayStation,Calificaciones,carrito,carritovacio,compraf,contacto,contactomensaje,dashboard,DashboardJs,EditarProductos,Estadisticas,index2,login,mensaje,mensajecompra,mensajeperfil,nintendo,ofertas,olvido,perfil,perfileditar,Productos,ProductosJs,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox
 
+# Esto es para usar imagenes
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('',index,name='index'),
     path('PlayStation',PlayStation,name='PlayStation'),
@@ -34,3 +38,5 @@ urlpatterns = [
     path('Xbox',Xbox,name='Xbox'),
 
 ]
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
