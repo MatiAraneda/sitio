@@ -3,6 +3,24 @@
 
     {% block contenido %}
 
+    <div class="header-content container">
+        <div class="header-txt">
+            <span>Bienvenido a nuestra tienda</span>
+            <h1>¡OFERTAS!</h1>
+            <p>
+                ¡Ultimas unidades!
+            </p>
+            <div class="butons">
+                <a href={% url "ofertas" %} class="btn-1">Ver ofertas</a>
+            </div>
+        </div>
+        <div class="header-img">
+            <img src={% static "../static/img/index/bag.png" %} alt="">
+        </div>
+    </div>
+
+</header>
+
     <section class="oferts container">
 
         <div class="ofert-1 b1">

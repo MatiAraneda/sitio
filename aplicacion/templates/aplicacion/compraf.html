@@ -14,7 +14,7 @@
 
 <div class="container">
 
-    <form action="mensajecompra.html">
+    <form action={% url "mensajecompra" %}>
 
         <div class="row">
 
@@ -84,7 +84,7 @@
     
         </div>
         <input type="submit" value="Confirmacion de compra" class="submit-btn">
-        <button><a href="index.html">Volver</a></button>
+        <button><a href={% url "index" %}>Volver</a></button>
 
     </form>
 </div>    

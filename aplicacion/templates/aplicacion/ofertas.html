@@ -10,10 +10,10 @@
 <body>
     <header class="header">
         <div class="menu container">
-            <a href="index.html" class="logo">Planix Games</a>
+            <a href={% url "index" %} class="logo">Planix Games</a>
             <input type="checkbox" id="menu" />
             <label for="menu">
-                <img src="img/index/menu.png" class="menu-icono" alt="menu">
+                <img src={% static "../static/img/index/menu.png" %} class="menu-icono" alt="menu">
             </label>
             <nav class="navbar">
                 <ul>
