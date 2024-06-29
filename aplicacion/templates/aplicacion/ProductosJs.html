@@ -1,11 +1,12 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Productos Publicados</title>
+    <title>Editar Productos</title>
     <link rel="stylesheet" href="{% static '../static/css/stats.css'%}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
@@ -68,43 +69,26 @@
     </div>
 
 
-    <div class="container">
-        <h1>Editar Producto Registrado</h1>
-        <form action="{% url 'dashboard' %}" >
-            <div class="form">
-                <div class="grupo">
-                    <label for="name">Nombre del Producto</label>
-                    <input type="text" id="name" name="name" placeholder="Ingrese nombre" >
-                </div>
-                <div class="grupo">
-                    <label for="desc">Descripción del Producto</label>
-                    <input type="text" id="desc" name="desc" placeholder="Ingrese una descripción" >
-                </div>
-                <div class="grupo">
-                    <label for="price">Precio del Producto</label>
-                    <input type="number" id="price" name="price" placeholder="$" >
-                </div>
-                <div>
-                    <label for="image">Imagen del Producto</label>
-                    <input type="file" id="image" name="image" accept="image/*">
-                </div>
-                <div>
-                    <p> 
-                        ‎  
-                    </p> 
-                </div>
-                <input type="submit" onclick= 'return enviarFormularioProductosRegistrados();' value='Confirmar Cambios'>
-                
+
+<div class="container">
+    <h1>Editar Producto</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="form">            
+                {% csrf_token %}
+                {{form | crispy}}
+            <input type="submit" onclick= 'return enviarFormularioProductos();' value='Confirmar Cambios'>            
             </div>   
         </form>
-        <div id='error'></div>
-       
-    </div>
+        <a href={% url "EditarProductos"%}>Editar Productos Publicados</a>
+    <div id='error'></div>
+
+</div>
+
+<div class="link_producto">
     
-    <div class="link_producto">
-        
-    <a href={% url "dashboard"%}>Volver al Dashboard</a>
-    
-    </div>
-    <script src="{% static 'js/form.js' %}"></script>   
+
+</div>
+<script src="{% static 'js/form.js' %}"></script>   
+</body>
+
 </html>

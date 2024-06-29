@@ -78,51 +78,37 @@
                         <th>Nombre</th>
                         <th>Descripción del producto</th>
                         <th>Precio del Producto</th>
-                        <th>Editar</th>
+                        <th>Imagen</th>
+                        <th>Modificar</th>
                         
                     </tr>
                 </thead>
                     <tbody>
-                        <tr>                            
-                            <td>Super Mario Odyssey</td>
-                            <td>El último juego de plataformas de Super Mario™ para Nintendo Switch</td>
-                            <td>$59.990</td>
-                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                            
-                        </tr>
-                        <tr>                            
-                            <td>God of War Ragnarök</td>
-                            <td>La secuela del aclamado reboot God of War para PlayStation 5</td>
-                            <td>$69.990</td>                            
-                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                               
-                        </tr>
-                        <tr>                            
-                            <td>Splatoon 2</td>
-                            <td>La fiebre de calamares llega a Nintendo Switch con su secuela</td>
-                            <td>$59.990</td>                            
-                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                               
-                        </tr>
-                        <tr>                            
-                            <td>The Last of Us I</td>
-                            <td>El remaster de uno de los mejores juegos de PlayStation 3, disponible ahora en PlayStation 5</td>
-                            <td>69.990</td>                            
-                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                               
-                        </tr>                      
-                        <tr>                            
-                            <td>Minecraft</td>
-                            <td>El sandbox más vendido de la historia, disponible en Xbox Series X</td>  
-                            <td>$39.990</td>                         
-                            <td><a href={% url "ProductosJs"%}>Editar</a></td>                               
-                        </tr>                                            
+                        
+                       {% for p in productos %}
+                       
+                       <tr>
+                            <td>{{ p.nombre }}</td>
+                            <td>{{ p.desc }}</td>  
+                            <td>{{ p.precio }}</td>  
+                            <td>{{ p.imagen }}</td>  
+                            <td>
+                                <a href="{% url 'ProductosJs' p.id %}"> Modificar</a>
+                            </td>     
+                       </tr> 
+
+                       {% endfor %}
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="7">Total de productos: 5</td>
+                            <td colspan="7">                 </td>
                         </tr>
                     </tfoot>                
             </table>
         </div>
     </div>
     <a href={% url "Productos"%}>Volver a Productos</a>
+ 
     </div>
     
 </body>
