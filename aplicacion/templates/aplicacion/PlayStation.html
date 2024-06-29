@@ -13,21 +13,21 @@
             <a href="index.html" class="logo">Planix Games</a>
             <input type="checkbox" id="menu" />
             <label for="menu">
-                <img src="img/index/menu.png" class="menu-icono" alt="menu">
+                <img src={% static "../static/img/index/menu.png" %} class="menu-icono" alt="menu">
             </label>
             <nav class="navbar">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="PlayStation.html">PlayStation</a></li>
-                    <li><a href="Nintendo.html">Nintendo Switch</a></li>
-                    <li><a href="Xbox.html">Xbox Series X</a></li>
-                    <li><a href="login.html">Conectate</a></li>
+                    <li><a href={% url "index" %}>Inicio</a></li>
+                    <li><a href={% url "PlayStation" %}>PlayStation</a></li>
+                    <li><a href={% url "Nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
+                    <li><a href={% url "login" %}>Conectate</a></li>
                 </ul>
             </nav>
             <div>
                 <ul>
                     <li class="submenu">
-                        <img id="img-carrito" src="img/index/car.svg" alt="car">
+                        <img id="img-carrito" src={%static "../static/img/index/car.svg" %} alt="car">
                         <div id="carrito">
                             <table id="lista-carrito">
                                 <thead>
@@ -51,7 +51,7 @@
                 <img src={% static "../static/img/playstation/elden200x324.jpg" %} alt="">
             </div>
             <div class="header-imgf">
-                <img src="img/playstation/playstation.png" alt="">
+                <img src={% static "../static/img/playstation/playstation.png" %} alt="">
             </div>
         </div>
     
@@ -64,7 +64,7 @@
         <div class="box-container" id="lista-1">
 
             <div class="box">
-                <img src="img/playstation/cod.png" alt="">
+                <img src={% static "../static/img/playstation/cod.png" %} alt="">
                 <div class="product-txt">
                     <h3>COD MW2</h3>
                     <p>¡Ultimas unidades!</p>
@@ -76,7 +76,7 @@
             </div>
 
             <div class="box">
-                <img src="img/playstation/crash.jpg" alt="">
+                <img src={ static "../static/img/playstation/crash.jpg"} alt="">
                 <div class="product-txt">
                     <h3>Crash Bandicoot 4</h3>
                     <p>¡Ultimas unidades!</p>
@@ -210,10 +210,10 @@
             <div class="link">
                 <h3>Contacto</h3>
                 <ul>
-                    <li><a href="contacto.html">Contactenos a traves del</a></li>
-                    <li><a href="contacto.html">Formulario o al email</a></li>
-                    <li><a href="contacto.html">MatiasCagarneda@jueguitos.cl</a></li>
-                    <li><a href="contacto.html">Enviar Formulario</a></li>
+                    <li><a href={% url "contacto" %}>Contactenos a traves del</a></li>
+                    <li><a href={% url "contacto" %}>Formulario o al email</a></li>
+                    <li><a href={% url "contacto" %}>MatiasCagarneda@jueguitos.cl</a></li>
+                    <li><a href={% url "contacto" %}>Enviar Formulario</a></li>
                 </ul>
             </div>
             <div class="link">
