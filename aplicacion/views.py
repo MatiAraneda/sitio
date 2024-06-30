@@ -123,6 +123,7 @@ def ProductosJs (request, id):
         formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Modificado exitosamente")
             return redirect(to="EditarProductos")
         data["form"] = formulario
     
@@ -140,8 +141,8 @@ def registro (request):
     if request.method == 'POST':
         formulario = CustomUserCreationForm(data=request.POST)
         if formulario.is_valid():
-            formulario.save()
-            user= authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
+            formulario.save()        
+            user= authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
             login(request, user)
             messages.success(request, "Registro realizado exitosamente")
             return redirect(to=index)
@@ -160,4 +161,10 @@ def UsuariosJs (request):
 
 def Xbox (request): 
     return render(request,'aplicacion/xbox.html')
+
+def eliminarProducto(request,id):
+    producto = get_object_or_404(Producto,id=id)
+    producto.delete()
+    messages.success(request, "Eliminado exitosamente")
+    return redirect(to="EditarProductos")
 
