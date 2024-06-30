@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from datetime import date
-from .models import Persona
+from .models import Producto
 from django.shortcuts import get_object_or_404, redirect
-from .forms import ProductosForm
+from .forms import ProductoForm, CustomUserCreationForm
 from django.contrib import messages
 from os import path, remove
 from django.conf import settings
+from django.contrib.auth import authenticate, login
+
 
 # Create your views here.
 
@@ -40,8 +42,6 @@ def dashboard (request):
 def DashboardJs (request): 
     return render(request,'aplicacion/DashboardJs.html')
 
-def EditarProductos (request): 
-    return render(request,'aplicacion/EditarProductos.html')
 
 def Estadisticas (request): 
     return render(request,'aplicacion/Estadisticas.html')
@@ -76,39 +76,78 @@ def perfil (request):
 def perfileditar (request): 
     return render(request,'aplicacion/perfileditar.html')
 
-def Productos (request): 
-    form=ProductosForm()
-
-    if request.method=="POST":
-        form=ProductosForm(data=request.POST, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Producto agregado al registro')
-            return redirect(to="dahsboard")
-
-    datos={
-        "form":form
-    }
-    return render(request,'aplicacion/Productos.html', datos)
+def EditarProductos (request): 
+    productos = Producto.objects.all()
     
+    data ={
+        'productos' : productos
+    }
 
+    return render(request,'aplicacion/EditarProductos.html',data) 
+    
+def Productos (request):
+    form = ProductoForm(data=request.POST, files=request.FILES)
+    if form.is_valid():
+        form.save()
+        
+        messages.success(request,'Producto agregado exitosamente')
+        return redirect(to="EditarProductos")
+    datos={
+        "form": form
+    }
+    return render(request, 'aplicacion/Productos.html', datos)
+ 
+#def Productos (request):
+#    data = {
+#        'form': ProductoForm()
+#    }
+#    
+#    if request.method == 'POST':
+#        formulario = ProductoForm(data=request.POST, files=request.FILES)
+#        if formulario.is_valid():
+#            formulario.save
+#    return render(request, 'aplicacion/Productos.html', data)
 
+def PublicarProducto (request):
+    return render(request,'aplicacion/PublicarProducto.html')
 
+def ProductosJs (request, id):           
+    
+    producto = get_object_or_404(Producto, id=id)
+    
+    data = {
+        'form': ProductoForm(instance=producto)
+    }
+    
+    if request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="EditarProductos")
+        data["form"] = formulario
+    
+    return render(request,'aplicacion/ProductosJs.html', data)
 
-
-
-
-
-
-
-def ProductosJs (request): 
-    return render(request,'aplicacion/ProductosJs.html')
 
 def productosregistrados (request): 
     return render(request,'aplicacion/productosregistrados.html')
 
 def registro (request): 
-    return render(request,'aplicacion/registro.html')
+    data = {
+        'form': CustomUserCreationForm
+    }
+    
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user= authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Registro realizado exitosamente")
+            return redirect(to=index)
+        data["form"] = formulario
+    
+    return render(request,'aplicacion/registro.html',data)
 
 def seguimiento (request): 
     return render(request,'aplicacion/seguimiento.html')
