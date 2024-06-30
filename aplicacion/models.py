@@ -11,4 +11,14 @@ class Producto(models.Model):
         return self.nombre #Esto es para que en la página de Django se muestre el nombre del producto
     
 
+class Persona(models.Model):
     
+    nombre=models.CharField(max_length=50)
+    apellidos=models.CharField(max_length=50)
+    alias=models.CharField(max_length=50)
+    telefono=models.CharField(max_length=12)
+    direccion=models.CharField(max_length=100)
+    tipo_usuario=models.CharField(max_length=13)
+    
+    def __str__(self):
+        return self.nombre #Esto es para que en la página de Django se muestre el nombre del producto

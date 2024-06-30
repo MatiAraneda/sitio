@@ -1,5 +1,7 @@
 from django.urls import path, include
-from .views import index, PlayStation,Calificaciones,carrito,carritovacio,compraf,contacto,contactomensaje,dashboard,DashboardJs,EditarProductos,Estadisticas,index2,login,mensaje,mensajecompra,mensajeperfil,nintendo,ofertas,olvido,perfil,perfileditar,Productos,ProductosJs,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox,PublicarProducto
+from .views import index, PlayStation,Calificaciones,carrito,carritovacio,compraf,contacto,contactomensaje,dashboard,DashboardJs,\
+    EditarProductos,Estadisticas,index2,login,mensaje,mensajecompra,mensajeperfil,nintendo,ofertas,olvido,perfil,perfileditar,Productos,\
+        ProductosJs,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox,PublicarProducto
 
 # Esto es para usar imagenes
 from django.conf import settings
