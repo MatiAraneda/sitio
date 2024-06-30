@@ -21,8 +21,17 @@
                     <li><a href={% url "PlayStation" %}>PlayStation</a></li>
                     <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
                     <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
-                    <li><a href={% url "login" %}>Conectate</a></li>
                     <li><a href={% url "carrito" %}>Carrito</a></li>
+                    <li><a href={% url "login" %}>Conectate</a></li>
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="nav-link px-5 text-light" type="submit" > <strong>{{user.username}}  | Cerrar Sesión</strong></button>
+                    </form> 
+                {% else %}
+                    <a class="nav-link px-5 text-light" href="{% url 'login' %}" ><strong></strong></a>
+                {% endif %}
+                </ul>
                 </ul>
             </nav>
             <div>
@@ -95,6 +104,7 @@
                 <h3>Juegos de Xbox</h3>
                 <a href={% url "Xbox" %}>Clic aqui</a>
             </div>
+
             <div class="ofert-img">
                 <img src={% static "../static/img/index/s3.png"%} alt="">
             </div>

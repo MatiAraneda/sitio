@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
+</head>
+<body>
+    <div class="formulario">
+        <h1>Inicio de sesión</h1>
+        <form action="" method="post"> 
+            
+            {% csrf_token %}
+            {{ form }}
+
+                    Olvide mi <a href="olvido.html">Contraseña</a></div>
+                <input type="submit"  value="ingresar">
+                
+            <div class="registrarse">
+                Quiero hacer el <a href="registro.html">registro</a>
+            </div>
+        </form>
+        <div id='error'></div>
+    </div>
+    {% if user.is_superuser %}
+        <a href={% url "dashboard" %} class="esquina" onclick="return enviarFormulario();">ADM</a>
+    {% endif %}
+    <script src="js/validaciones.js"></script>
+</body>
+</html>

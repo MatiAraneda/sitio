@@ -57,6 +57,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'sitio.urls'
 
+
+LOGIN_REDIRECT_URL  ="/"
+LOGOUT_REDIRECT_URL  ="/"
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -74,6 +78,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sitio.wsgi.application'
+
+MESSAGE_STORAGE ="django.contrib.messages.storage.cookie.CookieStorage"
 
 
 # Database
