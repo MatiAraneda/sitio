@@ -4,25 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>login</title>
     <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
 </head>
 <body>
     <div class="formulario">
         <h1>Inicio de sesión</h1>
-        <form action="index2.html">
-            <div class="username">
-                <input type="text" id ='username1'>
-                <label>Nombre de usuario</label>
-            </div>
-            <div class="username">
-                <input type="password" id='password1'>
-                <label>Contraseña</label>
-            </div>
-            <div class="recordar"></div>
-                <div class="registrarse">
+        <form action="" method="post"> 
+            
+            {% csrf_token %}
+            {{ form }}
+
                     Olvide mi <a href="olvido.html">Contraseña</a></div>
-                <input type="submit" onclick="return enviarFormulario();" value="Enviar">
+                <input type="submit"  value="ingresar">
                 
             <div class="registrarse">
                 Quiero hacer el <a href="registro.html">registro</a>
@@ -30,7 +24,9 @@
         </form>
         <div id='error'></div>
     </div>
-    <a href={% url "dashboard" %} class="esquina" onclick="return enviarFormulario();">ADM</a>
+    {% if user.is_superuser %}
+        <a href={% url "dashboard" %} class="esquina" onclick="return enviarFormulario();">ADM</a>
+    {% endif %}
     <script src="js/validaciones.js"></script>
 </body>
 </html>

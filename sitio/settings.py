@@ -142,5 +142,5 @@ STATICFILES_DIRS = [
 MESSAGE_STORAGE ="django.contrib.messages.storage.cookie.CookieStorage"
 
 
-#LOGIN_REDIRECT_URL  ="/"
-#LOGOUT_REDIRECT_URL  ="/"
+LOGIN_REDIRECT_URL  ="/"
+LOGOUT_REDIRECT_URL  ="/"
