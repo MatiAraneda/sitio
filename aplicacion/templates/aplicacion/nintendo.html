@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .products .card-img-top {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+    </style>
+    
+
 </head>
 <body>
     <header class="header">
@@ -19,7 +30,7 @@
                 <ul>
                     <li><a href={% url "index" %}>Inicio</a></li>
                     <li><a href={% url "PlayStation" %}>PlayStation</a></li>
-                    <li><a href={% url "Nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
                     <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
                     <li><a href={% url "login" %}>Conectate</a></li>
                 </ul>
@@ -58,24 +69,24 @@
     </header>
 
     <main class="products container">
-
         <h2>¡Juegos Disponibles!</h2>
-
-        <div class="box-container" id="lista-1">
-
-            <div class="box">
-                <img src={% static "../static/img/Nintendo/arms.png" %} alt="">
-                <div class="product-txt">
-                    <h3>Arms</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="1">
-                        Agregar al carrito
-                    </a>
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">{{ producto.desc }}</p>
+                        <p class="card-text">{{ producto.precio }}</p>
+                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </main>
+    
 
     <footer class="footer">
         <div class="footer-content container">

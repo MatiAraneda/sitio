@@ -7,6 +7,7 @@ from django.contrib import messages
 from os import path, remove
 from django.conf import settings
 from django.contrib.auth import authenticate, login
+from .Carrito import Carrito
 
 
 # Create your views here.
@@ -61,8 +62,9 @@ def mensajecompra (request):
 def mensajeperfil (request): 
     return render(request,'aplicacion/mensajeperfil.html')
 
-def nintendo (request): 
-    return render(request,'aplicacion/nintendo.html')
+def nintendo (request):
+    productos = Producto.objects.all() 
+    return render(request,'aplicacion/nintendo.html', {'productos':productos})
 
 def ofertas (request): 
     return render(request,'aplicacion/ofertas.html')
@@ -168,3 +170,26 @@ def eliminarProducto(request,id):
     messages.success(request, "Eliminado exitosamente")
     return redirect(to="EditarProductos")
 
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("aplicacion:nintendo")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("aplicacion:nintendo")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("aplicacion:nintendo")
+
+def limipiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("aplicacion:nintendo")
