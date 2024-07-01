@@ -4,29 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
 </head>
 <body>
     <div class="formulario">
-        <h1>Inicio de sesión</h1>
+        <h1>Registro de Usuario</h1>
         <form action="" method="post"> 
             
             {% csrf_token %}
             {{ form }}
 
-                    Olvide mi <a href="olvido.html">Contraseña</a></div>
-                <input type="submit"  value="ingresar">
+
+            <a href="{% url 'login' %}">iniciar sesión</a>
+                <input type="submit"  value="Registrar">
                 
-            <div class="registrarse">
-                Quiero hacer el <a href={% url "registro" %}>registro</a>
-            </div>
+
         </form>
         <div id='error'></div>
     </div>
-    {% if user.is_superuser %}
-        <a href={% url "dashboard" %} class="esquina" onclick="return enviarFormulario();">ADM</a>
-    {% endif %}
+
     <script src="js/validaciones.js"></script>
 </body>
 </html>

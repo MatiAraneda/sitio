@@ -2,12 +2,12 @@ from django.shortcuts import render
 from datetime import date
 from .models import Producto
 from django.shortcuts import get_object_or_404, redirect
-from .forms import ProductoForm, CustomUserCreationForm
+from .forms import ProductoForm, CustomUserCreationForm,CustomUserChangeForm
 from django.contrib import messages
 from os import path, remove
 from django.conf import settings
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -50,7 +50,7 @@ def index2 (request):
     return render(request,'aplicacion/index2.html')
 
 def login (request): 
-    return render(request,'aplicacion/login.html')
+    return render(request,'registration/login.html')
 
 def mensaje (request): 
     return render(request,'aplicacion/mensaje.html')
@@ -111,7 +111,7 @@ def Productos (request):
 def PublicarProducto (request):
     return render(request,'aplicacion/PublicarProducto.html')
 
-def ProductosJs (request, id):           
+def ProductosJs (request, id):         
     
     producto = get_object_or_404(Producto, id=id)
     
@@ -135,7 +135,7 @@ def productosregistrados (request):
 
 def registro (request): 
     data = {
-        'form': CustomUserCreationForm
+        'form': CustomUserCreationForm()
     }
     
     if request.method == 'POST':
@@ -143,21 +143,35 @@ def registro (request):
         if formulario.is_valid():
             formulario.save()        
             user= authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
-            login(request, user)
+            login(request)
             messages.success(request, "Registro realizado exitosamente")
             return redirect(to=index)
         data["form"] = formulario
     
-    return render(request,'aplicacion/registro.html',data)
+    return render(request,'registration/registro.html',data)
 
 def seguimiento (request): 
     return render(request,'aplicacion/seguimiento.html')
 
-def Usuarios (request): 
-    return render(request,'aplicacion/Usuarios.html')
+def Usuarios(request):
+    users = User.objects.all()
+    datos = {
+        'users': users
+    }
+    return render(request, 'aplicacion/Usuarios.html', datos)
 
-def UsuariosJs (request): 
-    return render(request,'aplicacion/UsuariosJs.html')
+def UsuariosJs(request, id): 
+    user = get_object_or_404(User, pk=id)
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Usuario modificado exitosamente")
+            return redirect('Usuarios')
+    else:
+        form = CustomUserChangeForm(instance=user)
+    return render(request, 'aplicacion/UsuariosJs.html', {'form': form, 'user': user})    
+
 
 def Xbox (request): 
     return render(request,'aplicacion/xbox.html')
@@ -167,4 +181,10 @@ def eliminarProducto(request,id):
     producto.delete()
     messages.success(request, "Eliminado exitosamente")
     return redirect(to="EditarProductos")
+
+def elimUsuario(request,id):
+    user = get_object_or_404(User,id=id)
+    user.delete()
+    messages.success(request, "Eliminado exitosamente")
+    return redirect(to="Usuarios")
 
