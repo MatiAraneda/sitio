@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import date
 from .models import Producto
 from django.shortcuts import get_object_or_404, redirect
@@ -195,11 +195,13 @@ def limpiar_carrito(request):
     return redirect("nintendo")
 
 def orden_compra(request):
-    carrito = request.session.get('carrito', {})
-    items = carrito.get('items', [])
-    total_carrito = sum(item['acumulado'] for item in items)
+    carrito = Carrito(request)
+    items = carrito.get_items()
+    total_carrito = carrito.get_total_carrito()
+
     context = {
-        'items': items,
-        'total_carrito': total_carrito
+        'items': items,  # Pasar la lista de productos al contexto
+        'total_carrito': total_carrito,
     }
+
     return render(request, 'aplicacion/resumen_pedido.html', context)
