@@ -1,47 +1,48 @@
 {% load static %}
-{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Usuario</title>
-    <link rel="stylesheet" href="{% static '../static/css/stats.css' %}" />
+    <title>Editar Usuarios</title>
+    <link rel="stylesheet" href="{% static '../static/css/stats.css'%}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
-    {% if perms.aplicacion.add_producto %}
     <div class="sidebar">
         <div class="logo"></div>
         <ul class="menu">
             <li>
-                <a href="{% url 'dashboard' %}">
+                <a href={% url "dashboard"%}>
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="active">
-                <a href="{% url 'Usuarios' %}">
+                
+                <a href={% url "Usuarios"%}>
                     <i class="fa-solid fa-circle-user"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
             <li>
-                <a href="{% url 'EditarProductos' %}">
+                <a href={% url "EditarProductos"%}>
                     <i class="fa-solid fa-cart-plus"></i>
                     <span>Productos</span>
                 </a>
             </li>
             <li>
-                <a href="{% url 'Estadisticas' %}">
+                <a href={% url "Estadisticas"%}>
                     <i class="fa-solid fa-chart-simple"></i>
                     <span>Estadísticas</span>
                 </a>
             </li>
+
             <li>
-                <a href="{% url 'index' %}">
+                <a href={% url "index" %}>
                     <i class="fa-solid fa-door-open"></i>
                     <span>Cerrar sesión</span>
                 </a>
@@ -52,28 +53,59 @@
     <div class="main--content">
         <div class="header--wrapper">
             <div class="header--title">
-                <span>Usuarios</span>
+                <span>Productos</span>
                 <h2>Dashboard</h2>
             </div>
-            <div class="user--info">
-                <img src="{% static '../static/img/perfil.png' %}" alt="">
-            </div>
-        </div>
-
-        <div class="container">
-            <h1>Modificar Datos del Usuario</h1>
-            <form method="post">
-                {% csrf_token %}
-                <div class="form">
-                    {{ form|crispy }}
-                    <input type="submit" value="Confirmar Cambios">
-                </div>
-            </form>
-            <div class="link_producto">
-                <a href="{% url 'Usuarios' %}">Volver a Usuarios</a>
-            </div>
+            <div class="user--info">                
+            <img src={% static "../static/img/perfil.png"%} alt="">
         </div>
     </div>
-    {% endif %}
+
+        <div class="container">
+            <h1>Modificar Datos de Usuarios</h1>
+            <form action={% url "dashboard"%} >
+                <div class="form">
+                    <div class="grupo">
+                        <label for="name">Nombre del Cliente</label>
+                        <input type="text" id="name" name="name" placeholder="Ingrese nombre" >
+                    </div>
+                    <div class="grupo">
+                        <label for="lastname">Apellidos del Cliente</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Ingrese apellidos" >
+                    </div>
+                    <div class="grupo">
+                        <label for="nick">Alias</label>
+                        <input type="text" id="nick" name="nick" placeholder="Ingrese un Alias" >
+                    </div>
+                    <div class="grupo">
+                        <label for="phone">Número de Teléfono</label>
+                        <input type="number" id="phone" name="phone" placeholder="Ingrese un número de teléfono" >
+                    </div>
+                    <div class="grupo">
+                        <label for="address">Dirección</label>
+                        <input type="text" id="address" name="address" placeholder="Ingrese una dirección" >
+                    </div>
+                    <div class="grupo">
+                        <label for="user-type">Tipo de Usuario</label>
+                        <input type="text" id="user-type" name="user-type" placeholder="Ingrese el tipo de usuario" >
+                    </div>
+                    <div class="grupo">
+                        <label for="date">Fecha</label>
+                        <input type="date" id="date" name="date" >
+                    </div>
+                    <input type="submit" onclick= 'return enviarFormularioUsuarios();' value='Confirmar Cambios'>
+                    
+                </div>   
+            </form>
+            <div id='error'></div>
+           
+        </div>
+        
+        <div class="link_producto">
+            
+        <a href={% url "Usuarios"%}>Volver a Usuarios</a>
+        
+        </div>
+        <script src="{% static 'js/form.js'%}"></script>  
 </body>
 </html>

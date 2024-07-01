@@ -11,7 +11,6 @@
 
 </head>
 <body>
-    {% if perms.aplicacion.add_producto %}
     <div class="sidebar">
         <div class="logo"></div>
         <ul class="menu">
@@ -69,36 +68,118 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
+                        <th>Fecha de creación</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
                         <th>Alias</th>
-                        <th>Correo</th> 
-                        <th>Modificar Usuario</th> 
-                        <th>Eliminar Usuario</th> 
-
+                        <th>Número de Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Tipo de Usuario</th>
+                        <th>Editar</th>
+                        
                     </tr>
                 </thead>
                     <tbody>
-                        {% for user in users %}
-                       
                         <tr>
-                            <td>{{ user.first_name }}</td> 
-                            <td>{{ user.last_name }}</td> 
-                            <td>{{ user.username }}</td>
-                            <td>{{ user.email }}</td>  
                             <td>
-                                <a href="{% url 'UsuariosJs' user.id %}" class="btn btn-info">Modificar</a>
+                                01-04-2024
                             </td>
+                            <td>Pablo Benjamín</td>
+                            <td>Sepulveda Daza</td>
+                            <td>Spaña</td>
+                            <td>+56934657777</td>
+                            <td>Los chorrillanos 98, San Pedro</td>
+                            <td>Administrador</td>
+                            <td><a href={% url "UsuariosJs"%}>Editar</a></td>   
+                            
+                        </tr>
+                        <tr>
                             <td>
-                                <a href="{% url 'elimUsuario' user.id %}" class="btn btn-danger">Eliminar</a>
-                            </td>       
-                        </tr> 
- 
-                        {% endfor %}                       
+                                01-04-2024
+                            </td>
+                            <td>Matías Alejandro</td>
+                            <td>Araneda Ramírez</td>
+                            <td>KineLead</td>
+                            <td>+56998404533</td>
+                            <td>Avenida Siempreviva 77, Lota</td>
+                            <td>Administrador</td>
+                            <td><a href={% url "UsuariosJs"%}>Editar</a></td>   
+                            
+                        </tr>
+
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Richard Ignacio</td>
+                            <td>Castillo Castillo</td>
+                            <td>Richard1998</td>
+                            <td>+56943098745</td>
+                            <td>Las mojojojo 21, Concepción</td>
+                            <td>Cliente</td>
+                            <td><a href={% url "UsuariosJs"%}>Editar</a></td>   
+                            
+                        </tr>
+
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Samuel Eliazar</td>
+                            <td>Reyes Poblete</td>
+                            <td>1kmanerasdmorir</td>
+                            <td>+56998404533</td>
+                            <td>Los lomotoros 91, Coronel</td>
+                            <td>Cliente</td>
+                            <td><a href={% url "UsuariosJs"%}>Editar</a></td>   
+                            
+                        </tr>                      
+
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Álvaro Juan</td>
+                            <td>Ortiz Guzmán</td>
+                            <td>Alvarito2004</td>
+                            <td>+56935647833</td>
+                            <td>Las calilas 32, Concepción</td>
+                            <td>Cliente</td>
+                            <td><a href={% url "UsuariosJs"%}>Editar</a></td>   
+                            
+                        </tr>
+
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Daniel Iván</td>
+                            <td>Salazar Torres</td>
+                            <td>iDiske92</td>
+                            <td>+56943546543</td>
+                            <td>Ningun Lugar 74, Concepción</td>
+                            <td>Cliente</td>
+                            <td><a href={% url "UsuariosJs"%}>Editar</a></td>   
+                            
+                        </tr>
+
+                        <tr>
+                            <td>
+                                08-04-2024
+                            </td>
+                            <td>Marco Andrés</td>
+                            <td>Carrillo Toledo</td>
+                            <td>MarkusCT</td>
+                            <td>+56955346522</td>
+                            <td>San Martin 322, Lota</td>
+                            <td>Cliente</td>
+                            <td><a href={% url "UsuariosJs"%}>Editar</a></td>   
+                            
+                        </tr>                        
                     </tbody>
                     <tfoot>
                         <tr>
-
+                            <td colspan="7">Total de Usuarios: 7</td>
                         </tr>
                     </tfoot>                
             </table>
@@ -106,5 +187,4 @@
     </div>
     </div>
 </body>
-{% endif %}
 </html>
