@@ -1,34 +1,46 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
 </head>
 <body>
     <header class="header">
         <div class="menu container">
-            <a href="index.html" class="logo">Planix Games</a>
+            <a href={% url "index" %} class="logo">Planix Games</a>
             <input type="checkbox" id="menu" />
             <label for="menu">
-                <img src="img/index/menu.png" class="menu-icono" alt="menu">
+                <img src={% static "../static/img/index/menu.png" %} class="menu-icono" alt="menu">
             </label>
             <nav class="navbar">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="PlayStation.html">PlayStation</a></li>
-                    <li><a href="Nintendo.html">Nintendo Switch</a></li>
-                    <li><a href="Xbox.html">Xbox Series X</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
-                    <li><a href="carrito.html">Carrito</a></li>
+                    <li><a href={% url "index" %}>inicio</a></li>
+                    <li><a href={% url "PlayStation" %}>PlayStation</a></li>
+                    <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
+                    <li><a href={% url "carrito" %}>Carrito</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'perfil' %}">Usuario</a></li>  <!-- Botón para ver perfil -->
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="nav-link px-5 text-light" type="submit" > <strong>{{user.username}}  | Cerrar Sesión</strong></button>
+                    </form> 
+                    {% else %}
+                    <a class="nav-link px-5 text-light" href="{% url 'login' %}" ><strong>Conectate</strong></a>
+                    {% endif %}
+                </ul>
                 </ul>
             </nav>
             <div>
                 <ul>
                     <li class="submenu">
-                        <a href="carrito.html">
-                            <img id="img-carrito" src="img/index/car.svg" alt="car">
+                        <a href={% url "carrito" %}>
+                            <img id="img-carrito" src={% static "../static/img/index/car.svg"%} alt="car">
+
                         </a>
                         <div id="carrito">
                             <table id="lista-carrito">
@@ -47,95 +59,44 @@
                 </ul>
             </div>
         </div>
-    </header>
-    <main>
-        <section class="profile">
-            <div class="container">
-                <h2>Perfil de Usuario</h2>
-                <table class="profile-table">
-                    <tr>
-                        <td>Nombre de Usuario:</td>
-                        <td>MatiasKinelead</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre:</td>
-                        <td>Matias Cagarneda</td>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <td>TuMathiDelBoom@nintendo.com</td>
-                    </tr>
-                    <tr>
-                        <td>Fecha de registro:</td>
-                        <td>01/01/2024</td>
-                    </tr>
-                    <!-- Puedes agregar más filas según las informaciones de perfil -->
-                    <tr>
-                        <td>Dirección:</td>
-                        <td>Calle 123, Concepcion, Chile</td>
-                    </tr>
-                    <tr>
-                        <td>Teléfono:</td>
-                        <td>+1234567890</td>
-                    </tr>
-                </table>
-                <a href="perfileditar.html">editar sus datos</a>
-            </div>
-        </section>
-        <section class="orders">
-            <div class="container">
-                <h2>Historial de Pedidos</h2>
-                <table class="orders-table">
-                    <thead>
-                        <tr>
-                            <th>Orden</th>
-                            <th>Fecha</th>
-                            <th>Total</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#12445</td>
-                            <td>22/03/2024</td>
-                            <td>$50000</td>
-                            <td>Entregado</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>#12446</td>
-                            <td>01/03/2024</td>
-                            <td>$55000</td>
-                            <td>Entregado</td>
-                        </tr>
-                        <tr>
-                            <td>#00000</td>
-                            <td>01/02/2024</td>
-                            <td>$50000</td>
-                            <td>Compra Anulada</td>
-                        </tr>
-                        <tr>
-                            <td>#12345</td>
-                            <td>01/05/2024</td>
-                            <td>$50000</td>
-                            <td><a href="seguimiento.html">Seguimiento</a></td>
-                        </tr>
-                        <tr>
-                            <td>""</td>
-                        </tr>
-                        <tr>
-                            <td>""</td>
-                        </tr>
-                        <tr>
-                            <td>""</td>
-                        </tr>
 
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
     
+    </header>
+
+    <section class="profile container">
+        <h2>Perfil de Usuario</h2>
+        <div class="user-info">
+            <h3>{{ user.username }}</h3>
+            <p>Correo electrónico: {{ user.email }}</p>
+            {% if user.persona %}
+            <p>Nombre: {{ user.persona.nombre }}</p>
+            <p>Apellidos: {{ user.persona.apellidos }}</p>
+            <p>Teléfono: {{ user.persona.telefono }}</p>
+            <p>Dirección: {{ user.persona.direccion }}</p>
+            <p>Dirección: {{ user.persona.tipo_usuario }}</p>
+            {% endif %}
+        </div>
+
+        <div class="order-history">
+            <h3>Historial de Pedidos</h3>
+            {% if user.compras.all %}
+            <ul>
+                {% for compra in user.compras.all %}
+                <li>
+                    <strong>Pedido #{{ compra.id }} - Fecha: {{ compra.fecha }}</strong>
+                    <ul>
+                        {% for producto in compra.productos.all %}
+                        <li>{{ producto.nombre }} - Cantidad: {{ producto.cantidad }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No hay pedidos realizados.</p>
+            {% endif %}
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-content container">
@@ -149,10 +110,10 @@
             <div class="link">
                 <h3>Contacto</h3>
                 <ul>
-                    <li><a href="contacto.html">Contactenos a traves del</a></li>
-                    <li><a href="contacto.html">Formulario o al email</a></li>
-                    <li><a href="contacto.html">MatiasCagarneda@jueguitos.cl</a></li>
-                    <li><a href="contacto.html">Enviar Formulario</a></li>
+                    <li><a href={% url "contacto" %}>Contactenos a traves del</a></li>
+                    <li><a href={% url "contacto" %}>Formulario o al email</a></li>
+                    <li><a href={% url "contacto" %}>MatiasCagarneda@jueguitos.cl</a></li>
+                    <li><a href={% url "contacto" %}>Enviar Formulario</a></li>
                 </ul>
             </div>
             <div class="link">

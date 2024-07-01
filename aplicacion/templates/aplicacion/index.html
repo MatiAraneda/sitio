@@ -22,15 +22,15 @@
                     <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
                     <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
                     <li><a href={% url "carrito" %}>Carrito</a></li>
-                    <li><a href={% url "login" %}>Conectate</a></li>
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'perfil' %}">Usuario</a></li>  <!-- Botón para ver perfil -->
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
                         <button class="nav-link px-5 text-light" type="submit" > <strong>{{user.username}}  | Cerrar Sesión</strong></button>
                     </form> 
-                {% else %}
-                    <a class="nav-link px-5 text-light" href="{% url 'login' %}" ><strong></strong></a>
-                {% endif %}
+                    {% else %}
+                    <a class="nav-link px-5 text-light" href="{% url 'login' %}" ><strong>Conectate</strong></a>
+                    {% endif %}
                 </ul>
                 </ul>
             </nav>
@@ -126,137 +126,8 @@
                 </div>
             </div>
 
-            <div class="box">
-                <img src={% static "../static/img/index/pr2.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Fallout new vegas</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="2">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
+            <!-- Aquí van más productos -->
 
-            <div class="box">
-                <img src={% static "../static/img/index/pr3.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Farcry Primal</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="3">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static "../static/img/index/pr4.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Farycry 5</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="4">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static "../static/img/index/pr5.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Forza 5</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="5">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static "../static/img/index/pr6.png"%} alt="">
-                <div class="product-txt">
-                    <h3>GTA V</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="6">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static  "../static/img/index/pr7.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Halo 5</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="7">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static "../static/img/index/pr8.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Mario Kart 8</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="8">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static "../static/img/index/pr9.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Mario Odyssey</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="9">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static "../static/img/index/pr10.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Metal Gear Solid V</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="10">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static "../static/img/index/pr11.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Resident evil 7</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="11">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src={% static "../static/img/index/pr12.png"%} alt="">
-                <div class="product-txt">
-                    <h3>Splatoon</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="12">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="btn-2" id="load-more">Cargar mas</div>
     </main>

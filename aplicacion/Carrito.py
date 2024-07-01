@@ -1,4 +1,5 @@
 from .models import Producto
+from django.contrib.auth.models import User 
 
 class Carrito:
     def __init__(self, request):
@@ -64,3 +65,8 @@ class Carrito:
         for item in self.carrito.values():
             total += item['acumulado']
         return total
+
+    def asociar_compra_a_usuario(self, user):
+        # Aquí podrías guardar la compra en la base de datos asociándola al usuario
+        # Por simplicidad, aquí simplemente lo mostramos como un ejemplo
+        print(f"Compra asociada al usuario: {user.username}")
