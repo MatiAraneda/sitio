@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col">
                 <h1 class="mb-4">Resumen de Pedido</h1>
-                <p class="mb-4">Compra realizada por: {{ usuario.username }}</p>
+                <p class="mb-4">Compra realizada por: {{ user.username }}</p>
 
                 <h2 class="mb-3">Detalles del Pedido</h2>
                 <ul class="list-group mb-4">
@@ -29,8 +29,8 @@
                     </li>
                     {% endfor %}
                 </ul>
-
-                <p class="lead mb-4">Total a Pagar: $ {{ total_carrito }}</p>
+                <p class="lead mb-4">Estado Envio: PENDIENTE DE ENVIO </p>
+                <p class="lead mb-4">Total a Pagado: $ {{ total_carrito }}</p>
 
                 <!-- Puedes agregar más detalles del pedido aquí -->
 

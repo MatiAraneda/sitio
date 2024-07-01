@@ -36,3 +36,29 @@ class ItemCompra(models.Model):
     compra = models.ForeignKey(Compra, related_name='items', on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField(default=1)
+    
+class Pedido(models.Model):
+    ESTADOS_PEDIDO = [
+        ('Pendiente', 'Pendiente'),
+        ('En Proceso', 'En Proceso'),
+        ('Enviado', 'Enviado'),
+        ('Entregado', 'Entregado'),
+        ('Cancelado', 'Cancelado'),
+    ]
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    estado = models.CharField(max_length=20, choices=ESTADOS_PEDIDO, default='Pendiente')
+    
+    def __str__(self):
+        return f'Pedido {self.id} de {self.user.username}'
+    
+class PedidoProducto(models.Model):
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+    precio = models.IntegerField()
+    
+    def __str__(self):
+        return f"{self.cantidad} de {self.producto.nombre}"

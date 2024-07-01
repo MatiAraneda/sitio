@@ -18,10 +18,10 @@
             <nav class="navbar">
                 <ul>
                     <li><a href={% url "index" %}>inicio</a></li>
-                    <li><a href={% url "PlayStation" %}>PlayStation</a></li>
+                    <li><a href={% url "PlayStation" %}>AGOTADO</a></li>
                     <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
-                    <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
-                    <li><a href={% url "carrito" %}>Carrito</a></li>
+                    <li><a href={% url "Xbox" %}>AGOTADO</a></li>
+                    <li><a href={% url "carrito" %}>AGOTADO</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'perfil' %}">Usuario</a></li>  <!-- Botón para ver perfil -->
                     <form action="{% url 'logout' %}" method="post">

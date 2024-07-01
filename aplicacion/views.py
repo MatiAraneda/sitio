@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from datetime import date
-from .models import Producto
+from .models import Producto, Pedido, PedidoProducto
 from django.shortcuts import get_object_or_404, redirect
 from .forms import ProductoForm, CustomUserCreationForm,CustomUserChangeForm
 from django.contrib import messages
@@ -246,3 +246,30 @@ def resumen_pedido(request):
     }
 
     return render(request, 'aplicacion/detalle_pedido.html', context)
+
+def realizar_compra(request):
+    carrito = Carrito(request)
+    pedido = carrito.procesar_compra(request.user)
+    if pedido:
+        messages.success(request, 'Compra realizada exitosamente')
+        return redirect('detalle_pedido', pedido_id=pedido.id)
+    else:
+        messages.error(request, 'No hay productos en el carrito')
+    return redirect(to="productos")
+
+def detalle_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id, user=request.user)
+    items = pedido.pedidoproducto_set.all()
+    detalles = []
+    for item in items:
+        detalles.append({
+            'producto': item.producto,
+            'cantidad': item.cantidad,
+            'precio': item.precio,
+            'total': item.cantidad * item.precio
+        })
+    return render(request, 'aplicacion/detalle_pedido.html', {'pedido': pedido, 'detalles': detalles})
+
+def lista_pedidos(request):
+    pedidos = Pedido.objects.filter(user=request.user)
+    return render(request, 'aplicacion/lista_pedidos.html', {'pedidos': pedidos})
