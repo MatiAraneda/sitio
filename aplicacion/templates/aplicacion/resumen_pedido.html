@@ -1,0 +1,80 @@
+<!-- En orden_compra.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Compra</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a href={% url "index" %} class="logo">Planix Games</a>
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src={% static "img/index/menu.png" %} class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href={% url "index" %}>Inicio</a></li>
+                    <li><a href={% url "PlayStation" %}>PlayStation</a></li>
+                    <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
+                    <li><a href={% url "login" %}>Conectate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Resumen de Compra</h2>
+        <div class="alert alert-primary" role="alert">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="row" colspan="3" class="text-center">CARRITO</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">PRECIO</th>
+                        <th scope="col">CANTIDAD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if items %}
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.nombre }}</td>
+                                <td>{{ item.acumulado }}</td>
+                                <td>{{ item.cantidad }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <div class="alert alert-danger text-center"> Sin Productos </div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                        <tr>
+                            <th scope="row">Total:</th>
+                            <td colspan="3">$ {{ total_carrito }}</td>
+                        </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <!-- Footer Content Here -->
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

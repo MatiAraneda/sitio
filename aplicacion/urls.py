@@ -6,6 +6,7 @@ from .views import index, PlayStation,Calificaciones,carrito,carritovacio,compra
 # Esto es para usar imagenes
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 
 urlpatterns = [
@@ -40,7 +41,8 @@ urlpatterns = [
     path('UsuariosJs/',UsuariosJs,name='UsuariosJs'),
     path('Xbox/',Xbox,name='Xbox'),
     path('PublicarProducto/',PublicarProducto,name='PublicarProducto'),
-    path('eliminarProducto/<id>/',eliminarProducto,name="eliminarProducto")
+    path('eliminarProducto/<id>/',eliminarProducto,name="eliminarProducto"),
+    path('orden_compra/', views.orden_compra, name='orden_compra'),
 
 ]
 if settings.DEBUG:

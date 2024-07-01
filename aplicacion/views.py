@@ -193,3 +193,13 @@ def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
     return redirect("nintendo")
+
+def orden_compra(request):
+    carrito = request.session.get('carrito', {})
+    items = carrito.get('items', [])
+    total_carrito = sum(item['acumulado'] for item in items)
+    context = {
+        'items': items,
+        'total_carrito': total_carrito
+    }
+    return render(request, 'aplicacion/resumen_pedido.html', context)
