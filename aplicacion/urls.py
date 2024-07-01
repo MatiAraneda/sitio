@@ -43,6 +43,7 @@ urlpatterns = [
     path('PublicarProducto/',PublicarProducto,name='PublicarProducto'),
     path('eliminarProducto/<id>/',eliminarProducto,name="eliminarProducto"),
     path('orden_compra/', views.orden_compra, name='orden_compra'),
+    path('pagar/', views.pagar, name='pagar'),
 
 ]
 if settings.DEBUG:
