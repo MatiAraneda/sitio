@@ -9,6 +9,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .Carrito import Carrito
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -214,17 +215,34 @@ def limpiar_carrito(request):
     carrito.limpiar()
     return redirect("nintendo")
 
+@login_required
 def orden_compra(request):
     carrito = Carrito(request)
     items = carrito.get_items()
     total_carrito = carrito.get_total_carrito()
 
+    # Asociar la compra al usuario actual
+    carrito.asociar_compra_a_usuario(request.user)
+
     context = {
-        'items': items,  # Pasar la lista de productos al contexto
+        'items': items,
         'total_carrito': total_carrito,
     }
 
     return render(request, 'aplicacion/resumen_pedido.html', context)
 
 def pagar(request):
+    # Aquí puedes implementar la lógica relacionada con el pago
     return render(request, 'aplicacion/pagar.html')
+
+def resumen_pedido(request):
+    carrito = Carrito(request)
+    items = carrito.get_items()
+    total_carrito = carrito.get_total_carrito()
+
+    context = {
+        'items': items,
+        'total_carrito': total_carrito,
+    }
+
+    return render(request, 'aplicacion/detalle_pedido.html', context)

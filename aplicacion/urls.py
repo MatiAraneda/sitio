@@ -45,6 +45,9 @@ urlpatterns = [
     path('elimUsuario/<id>/',elimUsuario,name='elimUsuario'),
     path('orden_compra/', views.orden_compra, name='orden_compra'),
     path('pagar/', views.pagar, name='pagar'),
+    path('detalle_pedido/', views.resumen_pedido, name='detalle_pedido'),
+    
+    
 
 
 ]
