@@ -71,22 +71,28 @@
     <main class="products container">
         <h2>¡Juegos Disponibles!</h2>
         <div class="row">
-            {% for producto in productos %}
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ producto.nombre }}</h5>
-                        <p class="card-text">{{ producto.desc }}</p>
-                        <p class="card-text">{{ producto.precio }}</p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            <div class="col-md-8">
+                <div class="row">
+                    {% for producto in productos %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ producto.nombre }}</h5>
+                                <p class="card-text">{{ producto.desc }}</p>
+                                <p class="card-text">{{ producto.precio }}</p>
+                                <a href="{% url 'Add' producto.id %}" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
+            <div class="col-md-4">
+                {% include "aplicacion/carrito2.html" %}
+            </div>
         </div>
     </main>
-    
 
     <footer class="footer">
         <div class="footer-content container">
