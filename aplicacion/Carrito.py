@@ -47,9 +47,3 @@ class Carrito:
         self.session["carrito"] = {}
         self.session.modified = True
 
-    def total_carrito(self):
-        total = 0
-        for key, value in self.carrito.items():
-            total += int(value["acumulado"])
-        return total
-    
