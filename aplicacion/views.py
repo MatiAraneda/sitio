@@ -111,7 +111,7 @@ def Productos (request):
 def PublicarProducto (request):
     return render(request,'aplicacion/PublicarProducto.html')
 
-def ProductosJs (request, id):           
+def ProductosJs (request, id):         
     
     producto = get_object_or_404(Producto, id=id)
     
