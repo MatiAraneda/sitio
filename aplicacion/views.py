@@ -189,7 +189,7 @@ def restar_producto(request, producto_id):
     carrito.restar(producto)
     return redirect("aplicacion:nintendo")
 
-def limipiar_carrito(request):
+def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
     return redirect("aplicacion:nintendo")
