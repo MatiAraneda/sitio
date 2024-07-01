@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,6 +13,7 @@
 </head>
 
 <body>
+    {% if perms.aplicacion.add_producto %}
     <div class="sidebar">
         <div class="logo"></div>
         <ul class="menu">
@@ -65,34 +67,11 @@
             <h1>Modificar Datos de Usuarios</h1>
             <form action={% url "dashboard"%} >
                 <div class="form">
-                    <div class="grupo">
-                        <label for="name">Nombre del Cliente</label>
-                        <input type="text" id="name" name="name" placeholder="Ingrese nombre" >
-                    </div>
-                    <div class="grupo">
-                        <label for="lastname">Apellidos del Cliente</label>
-                        <input type="text" id="lastname" name="lastname" placeholder="Ingrese apellidos" >
-                    </div>
-                    <div class="grupo">
-                        <label for="nick">Alias</label>
-                        <input type="text" id="nick" name="nick" placeholder="Ingrese un Alias" >
-                    </div>
-                    <div class="grupo">
-                        <label for="phone">Número de Teléfono</label>
-                        <input type="number" id="phone" name="phone" placeholder="Ingrese un número de teléfono" >
-                    </div>
-                    <div class="grupo">
-                        <label for="address">Dirección</label>
-                        <input type="text" id="address" name="address" placeholder="Ingrese una dirección" >
-                    </div>
-                    <div class="grupo">
-                        <label for="user-type">Tipo de Usuario</label>
-                        <input type="text" id="user-type" name="user-type" placeholder="Ingrese el tipo de usuario" >
-                    </div>
-                    <div class="grupo">
-                        <label for="date">Fecha</label>
-                        <input type="date" id="date" name="date" >
-                    </div>
+                    {% csrf_token %}
+                    {{ form | crispy}}
+                <input type="submit" onclick = 'return enviarformcliente();'  value="Confirmar Cambios">
+                <p class="warnings" id="warnings"></p>
+            </div>
                     <input type="submit" onclick= 'return enviarFormularioUsuarios();' value='Confirmar Cambios'>
                     
                 </div>   
@@ -108,4 +87,5 @@
         </div>
         <script src="{% static 'js/form.js'%}"></script>  
 </body>
+{% endif %}
 </html>

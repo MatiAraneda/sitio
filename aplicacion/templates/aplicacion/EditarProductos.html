@@ -35,6 +35,7 @@
 
 </head>
 <body>
+    {% if perms.aplicacion.add_producto %}
     <div class="sidebar">
         <div class="logo"></div>
         <ul class="menu">
@@ -144,4 +145,5 @@
     </div>
     
 </body>
+{% endif %}
 </html>

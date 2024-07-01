@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    {% if perms.aplicacion.add_producto %}
     <div class="sidebar">
         <div class="logo"></div>
         <ul class="menu">
@@ -108,4 +109,5 @@
         </div>
         <script src="{% static 'js/form.js'%}"></script>        
 </body>
+{% endif %}
 </html>
