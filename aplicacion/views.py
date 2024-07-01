@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import date
 from .models import Producto
 from django.shortcuts import get_object_or_404, redirect
@@ -8,6 +8,7 @@ from os import path, remove
 from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from .Carrito import Carrito
 
 # Create your views here.
 
@@ -61,8 +62,9 @@ def mensajecompra (request):
 def mensajeperfil (request): 
     return render(request,'aplicacion/mensajeperfil.html')
 
-def nintendo (request): 
-    return render(request,'aplicacion/nintendo.html')
+def nintendo (request):
+    productos = Producto.objects.all() 
+    return render(request,'aplicacion/nintendo.html', {'productos':productos})
 
 def ofertas (request): 
     return render(request,'aplicacion/ofertas.html')
@@ -188,3 +190,41 @@ def elimUsuario(request,id):
     messages.success(request, "Eliminado exitosamente")
     return redirect(to="Usuarios")
 
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("nintendo")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("nintendo")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("nintendo")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("nintendo")
+
+def orden_compra(request):
+    carrito = Carrito(request)
+    items = carrito.get_items()
+    total_carrito = carrito.get_total_carrito()
+
+    context = {
+        'items': items,  # Pasar la lista de productos al contexto
+        'total_carrito': total_carrito,
+    }
+
+    return render(request, 'aplicacion/resumen_pedido.html', context)
+
+def pagar(request):
+    return render(request, 'aplicacion/pagar.html')

@@ -16,9 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from aplicacion.views import nintendo,agregar_producto,eliminar_producto,restar_producto,limpiar_carrito
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('aplicacion.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('agregar/<int:producto_id>/', agregar_producto, name="Add"),
+    path('eliminar/<int:producto_id>/', eliminar_producto, name="Del"),
+    path('restar/<int:producto_id>/', restar_producto, name="Sub"),
+    path('limpiar/', limpiar_carrito, name="CLS"),
+    
 ]

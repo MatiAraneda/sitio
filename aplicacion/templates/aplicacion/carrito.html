@@ -1,34 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
 </head>
 <body>
     <header class="header">
         <div class="menu container">
-            <a href="index.html" class="logo">Planix Games</a>
+            <a href={% url "index" %} class="logo">Planix Games</a>
             <input type="checkbox" id="menu" />
             <label for="menu">
-                <img src="img/index/menu.png" class="menu-icono" alt="menu">
+                <img src={% static "../static/img/index/menu.png" %} class="menu-icono" alt="menu">
             </label>
             <nav class="navbar">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="PlayStation.html">PlayStation</a></li>
-                    <li><a href="Nintendo.html">Nintendo Switch</a></li>
-                    <li><a href="Xbox.html">Xbox Series X</a></li>
-                    <li><a href="login.html">Conectate</a></li>
-                    <li><a href="carrito.html">Carrito</a></li>
+                    <li><a href={% url "index" %}>inicio</a></li>
+                    <li><a href={% url "PlayStation" %}>PlayStation</a></li>
+                    <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
+                    <li><a href={% url "carrito" %}>Carrito</a></li>
+                    <li><a href={% url "login" %}>Conectate</a></li>
                 </ul>
             </nav>
             <div>
                 <ul>
                     <li class="submenu">
                         <a href="carrito.html">
-                            <img id="img-carrito" src="img/index/car.svg" alt="car">
+                            <img id="img-carrito" src={% static "../static/img/index/car.svg"%} alt="car">
                         </a>
                         <div id="carrito">
                             <table id="lista-carrito">

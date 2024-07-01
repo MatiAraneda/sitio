@@ -6,28 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .products .card-img-top {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+    </style>
+    
+
 </head>
 <body>
     <header class="header">
         <div class="menu container">
-            <a href="index.html" class="logo">Planix Games</a>
+            <a href={% url "index" %} class="logo">Planix Games</a>
             <input type="checkbox" id="menu" />
             <label for="menu">
-                <img src="img/index/menu.png" class="menu-icono" alt="menu">
+                <img src={% static "../static/img/index/menu.png" %} class="menu-icono" alt="menu">
             </label>
             <nav class="navbar">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="PlayStation.html">PlayStation</a></li>
-                    <li><a href="Nintendo.html">Nintendo Switch</a></li>
-                    <li><a href="Xbox.html">Xbox Series X</a></li>
-                    <li><a href="login.html">Conectate</a></li>
+                    <li><a href={% url "index" %}>Inicio</a></li>
+                    <li><a href={% url "PlayStation" %}>PlayStation</a></li>
+                    <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href={% url "Xbox" %}>Xbox Series X</a></li>
+                    <li><a href={% url "login" %}>Conectate</a></li>
                 </ul>
             </nav>
             <div>
                 <ul>
                     <li class="submenu">
-                        <img id="img-carrito" src="img/index/car.svg" alt="car">
+                        <img id="img-carrito" src={% static "../static/img/index/car.svg"%} alt="car">
                         <div id="carrito">
                             <table id="lista-carrito">
                                 <thead>
@@ -48,155 +59,40 @@
 
         <div class="header-content container">
             <div class="header-txt">
-                <img src="img/Nintendo/yadisponible.png" alt="">
+                <img src={% static "../static/img/Nintendo/yadisponible.png"%} alt="">
             </div>
             <div class="header-imgf">
-                <img src="img/Nintendo/nintendou.png" alt="">
+                <img src={% static "../static/img/Nintendo/nintendou.png"%} alt="">
             </div>
         </div>
     
     </header>
 
-    <main class="products container">
-
-        <h2>¡Juegos Disponibles!</h2>
-
-        <div class="box-container" id="lista-1">
-
-            <div class="box">
-                <img src="img/Nintendo/arms.png" alt="">
-                <div class="product-txt">
-                    <h3>Arms</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="1">
-                        Agregar al carrito
-                    </a>
+<main class="products container">
+    <h2>¡Juegos Disponibles!</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                {% for producto in productos %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producto.nombre }}</h5>
+                            <p class="card-text">{{ producto.desc }}</p>
+                            <p class="card-text">{{ producto.precio }}</p>
+                            <a href="{% url 'Add' producto.id %}" class="btn btn-primary">Agregar al carrito</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/bayo.jpg" alt="">
-                <div class="product-txt">
-                    <h3>Bayoneta</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="2">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/nintendo/dk.png" alt="">
-                <div class="product-txt">
-                    <h3>Donkey Kong Country</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="3">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/kirby.png" alt="">
-                <div class="product-txt">
-                    <h3>Kirby Deluxe</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="4">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/metroid.jpg" alt="">
-                <div class="product-txt">
-                    <h3>Forza 5</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="5">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/zelda.jpg" alt="">
-                <div class="product-txt">
-                    <h3>Zelda Breath of the Wild</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="6">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/smash.jpg" alt="">
-                <div class="product-txt">
-                    <h3>Super Smash Bros</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="7">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/Kirby2.png" alt="">
-                <div class="product-txt">
-                    <h3>Kirby Forgotten Land</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="8">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/mariokart.png" alt="">
-                <div class="product-txt">
-                    <h3>Mario Kart 8</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="9">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/mariood.png" alt="">
-                <div class="product-txt">
-                    <h3>Mario Odyssey</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="10">
-                        Agregar al carrito
-                    </a>
-                </div>
-            </div>
-
-            <div class="box">
-                <img src="img/Nintendo/splat.png" alt="">
-                <div class="product-txt">
-                    <h3>Splatoon 2</h3>
-                    <p>¡Ultimas unidades!</p>
-                    <p class="precio">$49.990</p>
-                    <a href="#" class="agregar-carrito btn-3" data-id="11">
-                        Agregar al carrito
-                    </a>
-                </div>
+                {% endfor %}
             </div>
         </div>
-        <div class="btn-2" id="load-more">Cargar mas</div>
-    </main>
+        <div class="col-md-4">
+            {% include "aplicacion/carrito2.html" %}
+        </div>
+    </div>
+</main>
 
     <footer class="footer">
         <div class="footer-content container">
@@ -210,10 +106,10 @@
             <div class="link">
                 <h3>Contacto</h3>
                 <ul>
-                    <li><a href="contacto.html">Contactenos a traves del</a></li>
-                    <li><a href="contacto.html">Formulario o al email</a></li>
-                    <li><a href="contacto.html">MatiasCagarneda@jueguitos.cl</a></li>
-                    <li><a href="contacto.html">Enviar Formulario</a></li>
+                    <li><a href={% url "contacto" %}>Contactenos a traves del</a></li>
+                    <li><a href={% url "contacto" %}>Formulario o al email</a></li>
+                    <li><a href={% url "contacto" %}>MatiasCagarneda@jueguitos.cl</a></li>
+                    <li><a href={% url "contacto" %}>Enviar Formulario</a></li>
                 </ul>
             </div>
             <div class="link">
