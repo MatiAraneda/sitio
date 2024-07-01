@@ -1,7 +1,7 @@
 from django.urls import path, include
 from .views import index, PlayStation,Calificaciones,carrito,carritovacio,compraf,contacto,contactomensaje,dashboard,DashboardJs,\
     EditarProductos,Estadisticas,index2,login,mensaje,mensajecompra,mensajeperfil,nintendo,ofertas,olvido,perfil,perfileditar,Productos,\
-        ProductosJs,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox,PublicarProducto, eliminarProducto,eliminarUsuario
+        ProductosJs,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox,PublicarProducto, eliminarProducto,elimUsuario
 
 # Esto es para usar imagenes
 from django.conf import settings
@@ -37,11 +37,11 @@ urlpatterns = [
     path('registro/',registro,name='registro'),
     path('seguimiento/',seguimiento,name='seguimiento'),
     path('Usuarios/',Usuarios,name='Usuarios'),
-    path('UsuariosJs/<id>/',UsuariosJs,name='UsuariosJs'),
+    path('UsuariosJs/<int:id>/', UsuariosJs, name='UsuariosJs'),
     path('Xbox/',Xbox,name='Xbox'),
     path('PublicarProducto/',PublicarProducto,name='PublicarProducto'),
     path('eliminarProducto/<id>/',eliminarProducto,name="eliminarProducto"),
-    path('eliminarUsuario/<id>/',eliminarUsuario,name='eliminarUsuario')
+    path('elimUsuario/<id>/',elimUsuario,name='elimUsuario')
     
 
 ]

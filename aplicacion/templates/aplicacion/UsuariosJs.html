@@ -6,10 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Usuarios</title>
-    <link rel="stylesheet" href="{% static '../static/css/stats.css'%}" />
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="{% static '../static/css/stats.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -18,33 +17,31 @@
         <div class="logo"></div>
         <ul class="menu">
             <li>
-                <a href={% url "dashboard"%}>
+                <a href="{% url 'dashboard' %}">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="active">
-                
-                <a href={% url "Usuarios"%}>
+                <a href="{% url 'Usuarios' %}">
                     <i class="fa-solid fa-circle-user"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
             <li>
-                <a href={% url "EditarProductos"%}>
+                <a href="{% url 'EditarProductos' %}">
                     <i class="fa-solid fa-cart-plus"></i>
                     <span>Productos</span>
                 </a>
             </li>
             <li>
-                <a href={% url "Estadisticas"%}>
+                <a href="{% url 'Estadisticas' %}">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span>Estadísticas</span>
                 </a>
             </li>
-
             <li>
-                <a href={% url "index" %}>
+                <a href="{% url 'index' %}">
                     <i class="fa-solid fa-door-open"></i>
                     <span>Cerrar sesión</span>
                 </a>
@@ -55,37 +52,28 @@
     <div class="main--content">
         <div class="header--wrapper">
             <div class="header--title">
-                <span>Productos</span>
+                <span>Usuarios</span>
                 <h2>Dashboard</h2>
             </div>
-            <div class="user--info">                
-            <img src={% static "../static/img/perfil.png"%} alt="">
+            <div class="user--info">
+                <img src="{% static '../static/img/perfil.png' %}" alt="">
+            </div>
         </div>
-    </div>
 
         <div class="container">
-            <h1>Modificar Datos de Usuarios</h1>
-            <form action={% url "dashboard"%} >
+            <h1>Modificar Datos del Usuario</h1>
+            <form method="post">
+                {% csrf_token %}
                 <div class="form">
-                    {% csrf_token %}
-                    {{ form | crispy}}
-                <input type="submit" onclick = 'return enviarformcliente();'  value="Confirmar Cambios">
-                <p class="warnings" id="warnings"></p>
-            </div>
-                    <input type="submit" onclick= 'return enviarFormularioUsuarios();' value='Confirmar Cambios'>
-                    
-                </div>   
+                    {{ form|crispy }}
+                    <input type="submit" value="Confirmar Cambios">
+                </div>
             </form>
-            <div id='error'></div>
-           
+            <div class="link_producto">
+                <a href="{% url 'Usuarios' %}">Volver a Usuarios</a>
+            </div>
         </div>
-        
-        <div class="link_producto">
-            
-        <a href={% url "Usuarios"%}>Volver a Usuarios</a>
-        
-        </div>
-        <script src="{% static 'js/form.js'%}"></script>  
+    </div>
+    {% endif %}
 </body>
-{% endif %}
 </html>

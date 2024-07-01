@@ -87,10 +87,10 @@
                             <td>{{ user.username }}</td>
                             <td>{{ user.email }}</td>  
                             <td>
-                            <a href="{% url 'UsuariosJs' user.id %}" class="btn btn-info"> Modificar</a>
-                            </td> 
+                                <a href="{% url 'UsuariosJs' user.id %}" class="btn btn-info">Modificar</a>
+                            </td>
                             <td>
-                            <a href="#" onclick="eliminarUsuario({{ user.id }})" class="btn btn-info"> Eliminar</a>
+                                <a href="{% url 'elimUsuario' user.id %}" class="btn btn-danger">Eliminar</a>
                             </td>       
                         </tr> 
  

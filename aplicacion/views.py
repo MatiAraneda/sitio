@@ -2,7 +2,7 @@ from django.shortcuts import render
 from datetime import date
 from .models import Producto
 from django.shortcuts import get_object_or_404, redirect
-from .forms import ProductoForm, CustomUserCreationForm
+from .forms import ProductoForm, CustomUserCreationForm,CustomUserChangeForm
 from django.contrib import messages
 from os import path, remove
 from django.conf import settings
@@ -160,8 +160,18 @@ def Usuarios(request):
     }
     return render(request, 'aplicacion/Usuarios.html', datos)
 
-def UsuariosJs (request): 
-    return render(request,'aplicacion/UsuariosJs.html')
+def UsuariosJs(request, id): 
+    user = get_object_or_404(User, pk=id)
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Usuario modificado exitosamente")
+            return redirect('Usuarios')
+    else:
+        form = CustomUserChangeForm(instance=user)
+    return render(request, 'aplicacion/UsuariosJs.html', {'form': form, 'user': user})    
+
 
 def Xbox (request): 
     return render(request,'aplicacion/xbox.html')
@@ -172,7 +182,7 @@ def eliminarProducto(request,id):
     messages.success(request, "Eliminado exitosamente")
     return redirect(to="EditarProductos")
 
-def eliminarUsuario(request,id):
+def elimUsuario(request,id):
     user = get_object_or_404(User,id=id)
     user.delete()
     messages.success(request, "Eliminado exitosamente")
