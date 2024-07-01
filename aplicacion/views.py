@@ -207,8 +207,4 @@ def orden_compra(request):
     return render(request, 'aplicacion/resumen_pedido.html', context)
 
 def pagar(request):
-    # Lógica para procesar el pago y vincular con el usuario
-    # Por ejemplo, puedes agregar código para crear una orden de compra vinculada al usuario actual
-    
-    # Ejemplo básico: renderizar una página de confirmación de pago
     return render(request, 'aplicacion/pagar.html')
