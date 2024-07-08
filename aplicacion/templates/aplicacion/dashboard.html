@@ -36,12 +36,7 @@
                     <span>Productos</span>
                 </a>
             </li>
-            <li>
-                <a href={% url "Estadisticas"%}>
-                    <i class="fa-solid fa-chart-simple"></i>
-                    <span>Estadísticas</span>
-                </a>
-            </li>
+
             
             <li>
                 <a href={% url "index"%}>
@@ -65,7 +60,7 @@
     </div>
 
     <div class="card--container">
-        <h3 class="main--title">Información General     ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎     Tu perrito del día es ❤️:</h3>
+        <h3 class="main--title">Información General     ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎     Tu perrito del día es ❤️:</h3>
         <div class="card--wrapper">
             <div class="payment--card light-red">
                 <div class="card--header">
@@ -109,74 +104,82 @@
                         <th>Monto</th>
                         <th>Categoría</th>
                         <th>Estado</th>
-
-                        
                     </tr>
                 </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                08-04-2024
-                            </td>
-                            <td>Richard Ignacio Castillo Castillo</td>
-                            <td>Débito</td>
-                            <td>Super Mario Odyssey</td>
-                            <td>$59.990</td>
-                            <td>Juego Nintendo Switch</td>
-                            <td>Entregado</td>                           
-                        </tr>
-                        <tr>
-                            <td>
-                                08-04-2024
-                            </td>
-                            <td>Samuel Eliazar Reyes Poblete</td>
-                            <td>Débito</td>
-                            <td>The Last of Us Part I</td>
-                            <td>$59.990</td>
-                            <td>Juego PlayStation 5</td>
-                            <td>Entregado</td>                               
-                        </tr>
-
-                        <tr>
-                            <td>
-                                08-04-2024
-                            </td>
-                            <td>Álvaro Juan Ortiz Guzmán</td>
-                            <td>Débito</td>
-                            <td>God of War: Ragnarök</td>
-                            <td>$69.990</td>
-                            <td>Juego PlayStation 5</td>
-                            <td>Entregado</td>                                 
-                        </tr>
-
-                        <tr>
-                            <td>
-                                08-04-2024
-                            </td>
-                            <td>Daniel Iván Salazar Torres</td>
-                            <td>Débito</td>
-                            <td>Splatoon 2</td>
-                            <td>$59.990</td>
-                            <td>Juego Nintendo Switch</td>
-                            <td>Entregado</td>                                 
-                        </tr>
-
-                        <tr>
-                            <td>
-                                08-04-2024
-                            </td>
-                            <td>Marco Andrés Carrillo Toledo</td>
-                            <td>Débito</td>
-                            <td>Minecraft</td>
-                            <td>$29.990</td>
-                            <td>Juego Xbox Series X</td>
-                            <td>Entregado</td>                                
-                        </tr>
-                        
-                    </tbody>
-                    <tfoot>
-
-                    </tfoot>                
+                <tbody>
+                    <tr>
+                        <td>08-04-2024</td>
+                        <td>Richard Ignacio Castillo Castillo</td>
+                        <td>Débito</td>
+                        <td>Super Mario Odyssey</td>
+                        <td>$59.990</td>
+                        <td>Juego Nintendo Switch</td>
+                        <td>
+                            <select name="estado" id="estado">
+                                <option value="entregado">Entregado</option>
+                                <option value="pendiente">Pendiente</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>08-04-2024</td>
+                        <td>Samuel Eliazar Reyes Poblete</td>
+                        <td>Débito</td>
+                        <td>The Last of Us Part I</td>
+                        <td>$59.990</td>
+                        <td>Juego PlayStation 5</td>
+                        <td>
+                            <select name="estado" id="estado">
+                                <option value="entregado">Entregado</option>
+                                <option value="pendiente">Pendiente</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>08-04-2024</td>
+                        <td>Álvaro Juan Ortiz Guzmán</td>
+                        <td>Débito</td>
+                        <td>God of War: Ragnarök</td>
+                        <td>$69.990</td>
+                        <td>Juego PlayStation 5</td>
+                        <td>
+                            <select name="estado" id="estado">
+                                <option value="entregado">Entregado</option>
+                                <option value="pendiente">Pendiente</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>08-04-2024</td>
+                        <td>Daniel Iván Salazar Torres</td>
+                        <td>Débito</td>
+                        <td>Splatoon 2</td>
+                        <td>$59.990</td>
+                        <td>Juego Nintendo Switch</td>
+                        <td>
+                            <select name="estado" id="estado">
+                                <option value="entregado">Entregado</option>
+                                <option value="pendiente">Pendiente</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>08-04-2024</td>
+                        <td>Marco Andrés Carrillo Toledo</td>
+                        <td>Débito</td>
+                        <td>Minecraft</td>
+                        <td>$29.990</td>
+                        <td>Juego Xbox Series X</td>
+                        <td>
+                            <select name="estado" id="estado">
+                                <option value="entregado">Entregado</option>
+                                <option value="pendiente">Pendiente</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
             </table>
         </div>
     </div>

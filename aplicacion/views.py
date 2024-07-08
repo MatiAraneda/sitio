@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import date
-from .models import Producto
+from .models import Producto, Pedido, PedidoProducto
 from django.shortcuts import get_object_or_404, redirect
 from .forms import ProductoForm, CustomUserCreationForm,CustomUserChangeForm
 from django.contrib import messages
@@ -8,6 +8,8 @@ from os import path, remove
 from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from .Carrito import Carrito
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -61,8 +63,9 @@ def mensajecompra (request):
 def mensajeperfil (request): 
     return render(request,'aplicacion/mensajeperfil.html')
 
-def nintendo (request): 
-    return render(request,'aplicacion/nintendo.html')
+def nintendo (request):
+    productos = Producto.objects.all() 
+    return render(request,'aplicacion/nintendo.html', {'productos':productos})
 
 def ofertas (request): 
     return render(request,'aplicacion/ofertas.html')
@@ -188,3 +191,85 @@ def elimUsuario(request,id):
     messages.success(request, "Eliminado exitosamente")
     return redirect(to="Usuarios")
 
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("nintendo")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("nintendo")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("nintendo")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("nintendo")
+
+@login_required
+def orden_compra(request):
+    carrito = Carrito(request)
+    items = carrito.get_items()
+    total_carrito = carrito.get_total_carrito()
+
+    # Asociar la compra al usuario actual
+    carrito.asociar_compra_a_usuario(request.user)
+
+    context = {
+        'items': items,
+        'total_carrito': total_carrito,
+    }
+
+    return render(request, 'aplicacion/resumen_pedido.html', context)
+
+def pagar(request):
+    # Aquí puedes implementar la lógica relacionada con el pago
+    return render(request, 'aplicacion/pagar.html')
+
+def resumen_pedido(request):
+    carrito = Carrito(request)
+    items = carrito.get_items()
+    total_carrito = carrito.get_total_carrito()
+
+    context = {
+        'items': items,
+        'total_carrito': total_carrito,
+    }
+
+    return render(request, 'aplicacion/detalle_pedido.html', context)
+
+def realizar_compra(request):
+    carrito = Carrito(request)
+    pedido = carrito.procesar_compra(request.user)
+    if pedido:
+        messages.success(request, 'Compra realizada exitosamente')
+        return redirect('detalle_pedido', pedido_id=pedido.id)
+    else:
+        messages.error(request, 'No hay productos en el carrito')
+    return redirect(to="productos")
+
+def detalle_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id, user=request.user)
+    items = pedido.pedidoproducto_set.all()
+    detalles = []
+    for item in items:
+        detalles.append({
+            'producto': item.producto,
+            'cantidad': item.cantidad,
+            'precio': item.precio,
+            'total': item.cantidad * item.precio
+        })
+    return render(request, 'aplicacion/detalle_pedido.html', {'pedido': pedido, 'detalles': detalles})
+
+def lista_pedidos(request):
+    pedidos = Pedido.objects.filter(user=request.user)
+    return render(request, 'aplicacion/lista_pedidos.html', {'pedidos': pedidos})
