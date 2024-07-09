@@ -42,7 +42,7 @@
                 <ul>
                     <li class="submenu">
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'perfil' %}">Usuario</a></li>
+                        <li><a href="{% url 'perfil_cliente' %}">Usuario</a></li>
                         <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
                             <button class="nav-link px-5 text-light" type="submit"><strong>{{ user.username }} | Cerrar Sesión</strong></button>
