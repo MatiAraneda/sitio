@@ -1,5 +1,6 @@
-from .models import Producto
-from django.contrib.auth.models import User 
+from .models import Producto, Compra, CompraProducto
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Carrito:
     def __init__(self, request):
@@ -67,6 +68,25 @@ class Carrito:
         return total
 
     def asociar_compra_a_usuario(self, user):
-        # Aquí podrías guardar la compra en la base de datos asociándola al usuario
-        # Por simplicidad, aquí simplemente lo mostramos como un ejemplo
-        print(f"Compra asociada al usuario: {user.username}")
+        # Crear una instancia de Compra asociada al usuario
+        compra = Compra.objects.create(
+            usuario=user,
+            fecha_compra=timezone.now(),
+            total=self.get_total_carrito()
+        )
+
+        # Crear instancias de CompraProducto para cada producto en el carrito
+        for item in self.carrito.values():
+            producto = Producto.objects.get(id=item['producto_id'])
+            CompraProducto.objects.create(
+                compra=compra,
+                producto=producto,
+                cantidad=item['cantidad'],
+                precio=item['acumulado']
+            )
+
+        # Limpiar el carrito después de realizar la compra
+        self.limpiar()
+
+        # Devolver la compra creada (opcional)
+        return compra

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from datetime import date
-from .models import Producto, Pedido, PedidoProducto
+from .models import Producto, Pedido, PedidoProducto, Compra, CompraProducto
 from django.shortcuts import get_object_or_404, redirect
 from .forms import ProductoForm, CustomUserCreationForm,CustomUserChangeForm
 from django.contrib import messages
@@ -273,3 +273,8 @@ def detalle_pedido(request, pedido_id):
 def lista_pedidos(request):
     pedidos = Pedido.objects.filter(user=request.user)
     return render(request, 'aplicacion/lista_pedidos.html', {'pedidos': pedidos})
+
+
+def lista_usuarios_compra(request):
+    compras = Compra.objects.all()
+    return render(request, 'aplicacion/lista_usuarios_compra.html', {'compras': compras})
