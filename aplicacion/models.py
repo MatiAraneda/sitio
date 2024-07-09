@@ -2,12 +2,13 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 
 class Producto(models.Model):
     
     nombre=models.CharField(max_length=50)
     desc=models.CharField(max_length=100, null=False)
-    precio = models.IntegerField(null=False)
+    precio = models.IntegerField(null=False, validators=[MinValueValidator(0)])
     imagen=models.ImageField(upload_to='productos',null=True)
 
     
