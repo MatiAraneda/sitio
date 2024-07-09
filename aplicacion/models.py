@@ -29,9 +29,15 @@ class Persona(models.Model):
         return self.nombre #Esto es para que en la página de Django se muestre el nombre del producto
 
 class Compra(models.Model):
+    ESTADO_ENVIO_CHOICES = [
+        ('en_proceso', 'En Proceso'),
+        ('enviado', 'Enviado'),
+        ('cancelado', 'Cancelado'),
+    ]
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_compra = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)
+    estado_envio = models.CharField(max_length=20, choices=ESTADO_ENVIO_CHOICES, default='en_proceso')
 
 class ItemCompra(models.Model):
     compra = models.ForeignKey(Compra, related_name='items', on_delete=models.CASCADE)
@@ -63,3 +69,12 @@ class PedidoProducto(models.Model):
     
     def __str__(self):
         return f"{self.cantidad} de {self.producto.nombre}"
+    
+class CompraProducto(models.Model):
+    compra = models.ForeignKey(Compra, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.cantidad} x {self.producto.nombre} en {self.compra}"

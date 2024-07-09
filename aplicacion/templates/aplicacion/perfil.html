@@ -81,18 +81,26 @@
         </div>
     </section>
     
-    <div class="container">
-        <div class="row">
-            <div class="col">
-
-                <h2 class="mb-3">Detalles del Pedido</h2>
-                <p class="lead mb-4">Estado Envio: PENDIENTE DE ENVIO{{ pedidoproducto.pedido }} </p>
-                <p class="lead mb-4">Total a Pagado: $ {{ total_carrito }}</p>
-
-                <a href={% url "index" %} class="btn btn-primary">Volver</a>
-            </div>
-        </div>
-    </div>
+                                        <div class="collapse" id="detalles{{ compra.id }}">
+                                            <table class="table table-sm mt-2">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Producto</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Precio</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in compra.items.all %}
+                                                        <tr>
+                                                            <td>{{ item.producto.nombre }}</td>
+                                                            <td>{{ item.cantidad }}</td>
+                                                            <td>${{ item.precio }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
 
     <footer class="footer">
         <div class="footer-content container">

@@ -29,16 +29,16 @@
             <nav class="navbar">
                 <ul>
                     <li><a href={% url "index" %}>Inicio</a></li>
-                    <li><a href=#>AGOTADO>AGOTADO</a></li>
+                    <li><a href=#>AGOTADO</a></li>
                     <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
-                    <li><a href=#>AGOTADO>AGOTADO</a></li>
+                    <li><a href=#>AGOTADO</a></li>
                 </ul>
             </nav>
             <div>
                 <ul>
                     <li class="submenu">
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'perfil' %}">Perfil</a></li>  <!-- Botón para ver perfil -->
+                        <li><a href="{% url 'perfil_cliente' %}">Perfil</a></li>
                         <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
                             <button class="nav-link px-5" type="submit" > <strong>{{user.username}}  | Cerrar Sesión</strong></button>

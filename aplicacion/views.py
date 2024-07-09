@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from datetime import date
-from .models import Producto, Pedido, PedidoProducto
+from .models import Producto, Pedido, PedidoProducto, Compra, CompraProducto
 from django.shortcuts import get_object_or_404, redirect
 from .forms import ProductoForm, CustomUserCreationForm,CustomUserChangeForm
 from django.contrib import messages
@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from .Carrito import Carrito
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.decorators import login_required
+from collections import defaultdict
 
 
 # Create your views here.
@@ -265,3 +266,38 @@ def detalle_pedido(request, pedido_id):
 def lista_pedidos(request):
     pedidos = Pedido.objects.filter(user=request.user)
     return render(request, 'aplicacion/lista_pedidos.html', {'pedidos': pedidos})
+
+
+def lista_usuarios_compra(request):
+    compras = Compra.objects.all()
+    return render(request, 'aplicacion/lista_usuarios_compra.html', {'compras': compras})
+
+@login_required
+def perfil_cliente(request):
+    user = request.user
+    compras = Compra.objects.filter(usuario=user).order_by('-fecha_compra')
+
+    # Agrupar compras por año y mes
+    compras_por_periodo = defaultdict(list)
+    for compra in compras:
+        periodo = compra.fecha_compra.strftime('%Y-%m')
+        compras_por_periodo[periodo].append(compra)
+
+    context = {
+        'user': user,
+        'compras': dict(compras_por_periodo)
+    }
+    return render(request, 'aplicacion/perfil_cliente.html', context)
+
+def cambiar_estado_envio(request, compra_id):
+    if not request.user.is_superuser:
+        return redirect('index')  # Redirige si no es superadmin
+
+    compra = Compra.objects.get(id=compra_id)
+
+    if request.method == 'POST':
+        estado_envio = request.POST.get('estado_envio')
+        compra.estado_envio = estado_envio
+        compra.save()
+
+    return redirect('lista_usuarios_compra')
