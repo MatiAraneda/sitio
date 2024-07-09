@@ -9,7 +9,9 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .Carrito import Carrito
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -37,6 +39,7 @@ def contacto (request):
 
 def contactomensaje (request): 
     return render(request,'aplicacion/contactomensaje.html')
+
 
 def dashboard (request): 
     return render(request,'aplicacion/dashboard.html')
@@ -99,17 +102,7 @@ def Productos (request):
         "form": form
     }
     return render(request, 'aplicacion/Productos.html', datos)
- 
-#def Productos (request):
-#    data = {
-#        'form': ProductoForm()
-#    }
-#    
-#    if request.method == 'POST':
-#        formulario = ProductoForm(data=request.POST, files=request.FILES)
-#        if formulario.is_valid():
-#            formulario.save
-#    return render(request, 'aplicacion/Productos.html', data)
+
 
 def PublicarProducto (request):
     return render(request,'aplicacion/PublicarProducto.html')
@@ -221,7 +214,6 @@ def orden_compra(request):
     items = carrito.get_items()
     total_carrito = carrito.get_total_carrito()
 
-    # Asociar la compra al usuario actual
     carrito.asociar_compra_a_usuario(request.user)
 
     context = {
@@ -232,7 +224,7 @@ def orden_compra(request):
     return render(request, 'aplicacion/resumen_pedido.html', context)
 
 def pagar(request):
-    # Aquí puedes implementar la lógica relacionada con el pago
+
     return render(request, 'aplicacion/pagar.html')
 
 def resumen_pedido(request):
