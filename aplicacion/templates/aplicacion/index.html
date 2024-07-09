@@ -21,6 +21,10 @@
                     <li><a href=#>AGOTADO</a></li>
                     <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
                     <li><a href=#>AGOTADO</a></li>
+                    {% if user.is_superuser%}
+                    <li><a href={% url "dashboard" %}>dashboard</a></li>
+                    {% endif %}
+
                 </ul>
                 </ul>
             </nav>
