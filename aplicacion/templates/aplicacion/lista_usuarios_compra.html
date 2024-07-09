@@ -5,13 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Compras de Usuarios</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #28a745;
+        }
+        .table thead {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+        .collapse table {
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1 class="my-4">Lista de Compras de Usuarios</h1>
         {% if compras %}
             <table class="table table-bordered table-striped">
-                <thead class="thead-dark">
+                <thead>
                     <tr>
                         <th>ID de Compra</th>
                         <th>Usuario</th>
@@ -32,7 +62,7 @@
                                     Ver Detalles
                                 </button>
                                 <div class="collapse" id="detalles{{ compra.id }}">
-                                    <table class="table table-sm mt-2">
+                                    <table class="table table-sm">
                                         <thead>
                                             <tr>
                                                 <th>Producto</th>
