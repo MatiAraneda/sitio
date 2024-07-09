@@ -1,100 +1,158 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil del Cliente</title>
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="{% static '../static/css/style.css'%}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
+
+        .table thead th {
+            color: #000000; 
         }
-        .container {
-            margin-top: 50px;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .table tbody td:nth-child(1), /* Primer columna (ID de Compra) */
+        .table tbody td:nth-child(2),
+        .table tbody td:nth-child(4), /* Segunda columna (Fecha de Compra) */
+        .table tbody td:nth-child(3) { /* Tercera columna (Total) */
+            color: #000000; /* Cambia el color de texto de las celdas de datos a negro */
         }
-        h1, h2 {
-            color: #28a745;
-        }
-        .table thead {
-            background-color: #28a745;
-            color: #ffffff;
-        }
-        .btn-info {
-            background-color: #17a2b8;
-            border-color: #17a2b8;
-        }
-        .btn-info:hover {
-            background-color: #138496;
-            border-color: #117a8b;
-        }
-        .collapse table {
-            margin-top: 15px;
-        }
+        
     </style>
 </head>
 <body>
-    <div class="container">
+    <header class="header">
+        <div class="menu container">
+            <a href={% url "index" %} class="logo">Planix Games</a>
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src={% static "../static/img/index/menu.png" %} class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href={% url "index" %}>Inicio</a></li>
+                    <li><a href=#>AGOTADO</a></li>
+                    <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
+                    <li><a href=#>AGOTADO</a></li>
+                </ul>
+            </nav>
+            <div>
+                <ul>
+                    <li class="submenu">
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'perfil' %}">Usuario</a></li>
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button class="nav-link px-5 text-light" type="submit"><strong>{{ user.username }} | Cerrar Sesión</strong></button>
+                        </form>
+                        {% else %}
+                        <a class="nav-link px-5 text-light" href="{% url 'login' %}"><strong>Conéctate</strong></a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="profile container">
         <h1 class="my-4">Perfil del Cliente: {{ user.username }}</h1>
-        {% if compras %}
-            {% for fecha, compras_periodo in compras.items %}
-                <div class="periodo-compras">
-                    <h2>Compras en {{ fecha }}</h2>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID de Compra</th>
-                                <th>Fecha de Compra</th>
-                                <th>Total</th>
-                                <th>Detalles</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for compra in compras_periodo %}
+        <div class="user-info">
+            <h3>{{ user.username }}</h3>
+            <p>Correo electrónico: {{ user.email }}</p>
+            {% if user.persona %}
+            <p>Nombre: {{ user.persona.nombre }}</p>
+            <p>Apellidos: {{ user.persona.apellidos }}</p>
+            <p>Teléfono: {{ user.persona.telefono }}</p>
+            <p>Dirección: {{ user.persona.direccion }}</p>
+            <p>Tipo de Usuario: {{ user.persona.tipo_usuario }}</p>
+            {% endif %}
+        </div>
+
+        <div class="order-history">
+            <h2>Historial de Compras</h2>
+            {% if compras %}
+                {% for fecha, compras_periodo in compras.items %}
+                    <div class="periodo-compras">
+                        <h3>Compras en {{ fecha }}</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{ compra.id }}</td>
-                                    <td>{{ compra.fecha_compra|date:"d/m/Y H:i" }}</td>
-                                    <td>${{ compra.total }}</td>
-                                    <td>
-                                        <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#detalles{{ compra.id }}" aria-expanded="false" aria-controls="detalles{{ compra.id }}">
-                                            Ver Detalles
-                                        </button>
-                                        <div class="collapse" id="detalles{{ compra.id }}">
-                                            <table class="table table-sm mt-2">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Producto</th>
-                                                        <th>Cantidad</th>
-                                                        <th>Precio</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for item in compra.items.all %}
-                                                        <tr>
-                                                            <td>{{ item.producto.nombre }}</td>
-                                                            <td>{{ item.cantidad }}</td>
-                                                            <td>${{ item.precio }}</td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </td>
+                                    <th>ID de Compra</th>
+                                    <th>Fecha de Compra</th>
+                                    <th>Total</th>
+                                    <th>Envío</th>
                                 </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No hay compras registradas.</p>
-        {% endif %}
-    </div>
+                            </thead>
+                            <tbody>
+                                {% for compra in compras_periodo %}
+                                    <tr>
+                                        <td>{{ compra.id }}</td>
+                                        <td>{{ compra.fecha_compra|date:"d/m/Y H:i" }}</td>
+                                        <td>${{ compra.total }}</td>
+                                        <td>
+                                            <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#envio{{ compra.id }}" aria-expanded="false" aria-controls="envio{{ compra.id }}">
+                                                Envío
+                                            </button>
+                                            <div class="collapse" id="envio{{ compra.id }}">
+                                                <p class="mt-2">{{ compra.estado_envio }}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hay compras registradas.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>Horario de Atención</h3>
+                <ul>
+                    <li><a href="#">Lunes a Viernes</a></li>
+                    <li><a href="#">de 8:00 a 18:00</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href={% url "contacto" %}>Contáctenos a través del</a></li>
+                    <li><a href={% url "contacto" %}>Formulario o al email</a></li>
+                    <li><a href={% url "contacto" %}>MatiasCagarneda@jueguitos.cl</a></li>
+                    <li><a href={% url "contacto" %}>Enviar Formulario</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>Lorem</h3>
+                <ul>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </div>
+            <div class="link">
+                <h3>Lorem</h3>
+                <ul>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

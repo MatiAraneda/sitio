@@ -296,3 +296,16 @@ def perfil_cliente(request):
         'compras': dict(compras_por_periodo)
     }
     return render(request, 'aplicacion/perfil_cliente.html', context)
+
+def cambiar_estado_envio(request, compra_id):
+    if not request.user.is_superuser:
+        return redirect('index')  # Redirige si no es superadmin
+
+    compra = Compra.objects.get(id=compra_id)
+
+    if request.method == 'POST':
+        estado_envio = request.POST.get('estado_envio')
+        compra.estado_envio = estado_envio
+        compra.save()
+
+    return redirect('lista_usuarios_compra')

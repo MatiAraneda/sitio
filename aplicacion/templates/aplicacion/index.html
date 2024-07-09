@@ -31,7 +31,7 @@
                             <ul>
                                 <li class="submenu">
                                     {% if user.is_authenticated %}
-                                    <li><a href="{% url 'perfil' %}">Perfil</a></li>  <!-- Botón para ver perfil -->
+                                    <li><a href="{% url 'perfil_cliente' %}">Perfil</a></li>
                                     <form action="{% url 'logout' %}" method="post">
                                         {% csrf_token %}
                                         <button class="nav-link px-5" type="submit" > <strong>{{user.username}}  | Cerrar Sesión</strong></button>

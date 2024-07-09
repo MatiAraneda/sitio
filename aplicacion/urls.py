@@ -48,6 +48,7 @@ urlpatterns = [
     path('detalle_pedido/', views.resumen_pedido, name='detalle_pedido'),
     path('lista_usuarios_compra/', lista_usuarios_compra, name='lista_usuarios_compra'),
     path('perfil_cliente/', perfil_cliente, name='perfil_cliente'),
+    path('cambiar-envio/<int:compra_id>/', views.cambiar_estado_envio, name='cambiar_envio'),
 
 
 ]

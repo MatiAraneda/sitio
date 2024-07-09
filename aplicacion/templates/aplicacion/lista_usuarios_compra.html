@@ -47,7 +47,7 @@
                         <th>Usuario</th>
                         <th>Fecha de Compra</th>
                         <th>Total</th>
-                        <th>Detalles</th>
+                        <th>Envío</th> <!-- Cambio de etiqueta de Detalles a Envío -->
                     </tr>
                 </thead>
                 <tbody>
@@ -58,29 +58,24 @@
                             <td>{{ compra.fecha_compra|date:"d/m/Y H:i" }}</td>
                             <td>${{ compra.total }}</td>
                             <td>
-                                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#detalles{{ compra.id }}" aria-expanded="false" aria-controls="detalles{{ compra.id }}">
-                                    Ver Detalles
-                                </button>
-                                <div class="collapse" id="detalles{{ compra.id }}">
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th>Producto</th>
-                                                <th>Cantidad</th>
-                                                <th>Precio</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for item in compra.items.all %}
-                                                <tr>
-                                                    <td>{{ item.producto.nombre }}</td>
-                                                    <td>{{ item.cantidad }}</td>
-                                                    <td>${{ item.precio }}</td>
-                                                </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                {% if user.is_superuser %} <!-- Mostrar solo si es superadmin -->
+                                    <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#envio{{ compra.id }}" aria-expanded="false" aria-controls="envio{{ compra.id }}">
+                                        Envío
+                                    </button>
+                                    <div class="collapse" id="envio{{ compra.id }}">
+                                        <form action="{% url 'cambiar_envio' compra.id %}" method="post">
+                                            {% csrf_token %}
+                                            <select name="estado_envio" class="form-control">
+                                                {% for choice in compra.ESTADO_ENVIO_CHOICES %}
+                                                    <option value="{{ choice.0 }}" {% if compra.estado_envio == choice.0 %} selected {% endif %}>{{ choice.1 }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+                                        </form>
+                                    </div>
+                                {% else %}
+                                    No autorizado <!-- Opción por defecto si no es superadmin -->
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
