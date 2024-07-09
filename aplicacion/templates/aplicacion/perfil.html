@@ -22,38 +22,21 @@
                     <li><a href={% url "PlayStation" %}>AGOTADO</a></li>
                     <li><a href={% url "nintendo" %}>Nintendo Switch</a></li>
                     <li><a href={% url "Xbox" %}>AGOTADO</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'perfil' %}">Usuario</a></li>  <!-- Botón para ver perfil -->
-                    <form action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <button class="nav-link px-5 text-light" type="submit" > <strong>{{user.username}}  | Cerrar Sesión</strong></button>
-                    </form> 
-                    {% else %}
-                    <a class="nav-link px-5 text-light" href="{% url 'login' %}" ><strong>Conectate</strong></a>
-                    {% endif %}
                 </ul>
                 </ul>
             </nav>
             <div>
                 <ul>
                     <li class="submenu">
-                        <a href={% url "carrito" %}>
-                            <img id="img-carrito" src={% static "../static/img/index/car.svg"%} alt="car">
-
-                        </a>
-                        <div id="carrito">
-                            <table id="lista-carrito">
-                                <thead>
-                                    <tr>
-                                        <th>Imagen</th>
-                                        <th>Nombre</th>
-                                        <th>Precio</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                            <a href="#" id="vaciar-carrito" class="btn-3">Vaciar Carrito</a>
-                        </div>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'perfil' %}">Usuario</a></li>  <!-- Botón para ver perfil -->
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button class="nav-link px-5 text-light" type="submit" > <strong>{{user.username}}  | Cerrar Sesión</strong></button>
+                        </form> 
+                        {% else %}
+                        <a class="nav-link px-5 text-light" href="{% url 'login' %}" ><strong>Conectate</strong></a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
