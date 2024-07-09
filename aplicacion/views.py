@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .Carrito import Carrito
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -212,7 +213,6 @@ def orden_compra(request):
     carrito = Carrito(request)
     items = carrito.get_items()
     total_carrito = carrito.get_total_carrito()
-
 
     carrito.asociar_compra_a_usuario(request.user)
 
