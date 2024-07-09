@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Cliente</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #28a745;
+        }
+        .table thead {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+        .collapse table {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Perfil del Cliente: {{ user.username }}</h1>
+        {% if compras %}
+            {% for fecha, compras_periodo in compras.items %}
+                <div class="periodo-compras">
+                    <h2>Compras en {{ fecha }}</h2>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID de Compra</th>
+                                <th>Fecha de Compra</th>
+                                <th>Total</th>
+                                <th>Detalles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for compra in compras_periodo %}
+                                <tr>
+                                    <td>{{ compra.id }}</td>
+                                    <td>{{ compra.fecha_compra|date:"d/m/Y H:i" }}</td>
+                                    <td>${{ compra.total }}</td>
+                                    <td>
+                                        <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#detalles{{ compra.id }}" aria-expanded="false" aria-controls="detalles{{ compra.id }}">
+                                            Ver Detalles
+                                        </button>
+                                        <div class="collapse" id="detalles{{ compra.id }}">
+                                            <table class="table table-sm mt-2">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Producto</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Precio</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in compra.items.all %}
+                                                        <tr>
+                                                            <td>{{ item.producto.nombre }}</td>
+                                                            <td>{{ item.cantidad }}</td>
+                                                            <td>${{ item.precio }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No hay compras registradas.</p>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

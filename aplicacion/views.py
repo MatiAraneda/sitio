@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .Carrito import Carrito
 from django.contrib.auth.decorators import login_required
+from collections import defaultdict
 
 # Create your views here.
 
@@ -278,3 +279,20 @@ def lista_pedidos(request):
 def lista_usuarios_compra(request):
     compras = Compra.objects.all()
     return render(request, 'aplicacion/lista_usuarios_compra.html', {'compras': compras})
+
+@login_required
+def perfil_cliente(request):
+    user = request.user
+    compras = Compra.objects.filter(usuario=user).order_by('-fecha_compra')
+
+    # Agrupar compras por año y mes
+    compras_por_periodo = defaultdict(list)
+    for compra in compras:
+        periodo = compra.fecha_compra.strftime('%Y-%m')
+        compras_por_periodo[periodo].append(compra)
+
+    context = {
+        'user': user,
+        'compras': dict(compras_por_periodo)
+    }
+    return render(request, 'aplicacion/perfil_cliente.html', context)

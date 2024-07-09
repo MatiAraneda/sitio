@@ -1,7 +1,7 @@
 from django.urls import path, include
 from .views import index, PlayStation,Calificaciones,carrito,carritovacio,compraf,contacto,contactomensaje,dashboard,DashboardJs,\
     EditarProductos,Estadisticas,index2,login,mensaje,mensajecompra,mensajeperfil,nintendo,ofertas,olvido,perfil,perfileditar,Productos,\
-        ProductosJs,lista_usuarios_compra,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox,PublicarProducto, eliminarProducto,elimUsuario
+        ProductosJs,perfil_cliente,lista_usuarios_compra,productosregistrados,registro,seguimiento,Usuarios,UsuariosJs,Xbox,PublicarProducto, eliminarProducto,elimUsuario
 
 # Esto es para usar imagenes
 from django.conf import settings
@@ -47,6 +47,7 @@ urlpatterns = [
     path('pagar/', views.pagar, name='pagar'),
     path('detalle_pedido/', views.resumen_pedido, name='detalle_pedido'),
     path('lista_usuarios_compra/', lista_usuarios_compra, name='lista_usuarios_compra'),
+    path('perfil_cliente/', perfil_cliente, name='perfil_cliente'),
 
 
 ]
